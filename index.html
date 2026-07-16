@@ -101,7 +101,12 @@
 
   .empty{text-align:center;color:var(--faint);padding:40px 0;font-size:15px;display:none}
   .empty.show{display:block}
-  footer{margin-top:36px;padding-top:20px;border-top:1px solid var(--line);text-align:center;font-size:13px;color:var(--faint)}
+  footer{margin-top:36px;padding-top:20px;border-top:1px solid var(--line);text-align:center;font-size:13px;color:var(--faint);line-height:1.7}
+  .reset{
+    margin-top:10px;background:none;border:1px solid var(--line);color:var(--muted);
+    font:inherit;font-size:13px;padding:7px 14px;border-radius:8px;cursor:pointer;
+  }
+  .reset:hover{border-color:var(--clay);color:var(--clay)}
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -366,7 +371,7 @@
 </div>
 <p class="empty" id="empty">Nothing matches that.</p>
 
-<footer>13 vendors · Sonoma County · tap any number to call</footer>
+<footer>Your checkmarks and notes save on this device.<br><button id="reset" class="reset">Clear everything</button></footer>
 
 </div>
 
@@ -413,6 +418,55 @@
     document.getElementById('cnt').textContent = done + ' of ' + cards.length + ' called';
     document.getElementById('fill').style.width = (done / cards.length * 100) + '%';
   }
+
+  /* ---- save + restore ---- */
+  const KEY = 'sonoma-shuttle-v1';
+
+  function keyFor(card){
+    return card.querySelector('.name').textContent.replace('\u203a','').trim();
+  }
+
+  function save(){
+    const data = {};
+    cards.forEach(c => {
+      data[keyFor(c)] = {
+        called: c.querySelector('.tick').checked,
+        note: c.querySelector('.note').value
+      };
+    });
+    try { localStorage.setItem(KEY, JSON.stringify(data)); } catch(e){}
+  }
+
+  function restore(){
+    let data;
+    try { data = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e){ return; }
+    cards.forEach(c => {
+      const saved = data[keyFor(c)];
+      if (!saved) return;
+      const tick = c.querySelector('.tick');
+      tick.checked = !!saved.called;
+      c.classList.toggle('done', tick.checked);
+      c.querySelector('.note').value = saved.note || '';
+    });
+  }
+
+  cards.forEach(c => {
+    c.querySelector('.tick').addEventListener('change', save);
+    c.querySelector('.note').addEventListener('input', save);
+  });
+
+  document.getElementById('reset').addEventListener('click', () => {
+    if (!confirm('Clear every checkmark and note?')) return;
+    try { localStorage.removeItem(KEY); } catch(e){}
+    cards.forEach(c => {
+      c.querySelector('.tick').checked = false;
+      c.querySelector('.note').value = '';
+      c.classList.remove('done');
+    });
+    progress();
+  });
+
+  restore();
   progress();
 </script>
 </body>

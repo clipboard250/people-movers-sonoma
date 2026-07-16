@@ -3,589 +3,386 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shuttle Call Sheet — K &amp; G</title>
+<title>Shuttle List — Oct 3</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Limelight&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0B0B0C;
-    --ink-2:#15181A;
-    --ink-3:#1E2225;
-    --gold:#C9A227;
-    --gold-dim:#8A6F1E;
-    --silver:#C6C9CE;
-    --silver-dim:#8A9096;
-    --sea:#20B2AA;
-    --line:rgba(198,201,206,.16);
-    --pad:clamp(16px,4vw,28px);
+    --bone:#F0EEE6;--white:#fff;--ink:#141413;--ink2:#3D3D3A;
+    --muted:#6C6B66;--faint:#9A988F;--line:#DEDBD1;
+    --clay:#D97757;--clay-bg:#F7EDE7;--moss:#3D7A5C;--moss-bg:#E8F0EB;
   }
-  *{box-sizing:border-box}
-  body,.co,.body,dd{overflow-wrap:anywhere}
-  html{-webkit-text-size-adjust:100%}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   body{
-    margin:0;
-    background:var(--ink);
-    background-image:
-      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(32,178,170,.10), transparent 70%),
-      radial-gradient(ellipse 60% 40% at 50% 100%, rgba(201,162,39,.06), transparent 70%);
-        color:var(--silver);
-    font-family:"Barlow",system-ui,-apple-system,sans-serif;
-    font-size:17px;
-    line-height:1.55;
+    margin:0;background:var(--bone);color:var(--ink);
+    font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;
+    font-size:16px;line-height:1.5;overflow-wrap:anywhere;
   }
-  .wrap{max-width:860px;margin:0 auto;padding:0 var(--pad) 96px}
+  .wrap{max-width:640px;margin:0 auto;padding:0 18px 80px}
 
-  /* ---- Marquee header ---- */
-  header{padding:clamp(40px,9vw,84px) 0 clamp(28px,5vw,44px);text-align:center}
-  .bulbs{
-    display:flex;justify-content:center;gap:10px;margin-bottom:22px;
-  }
-  .bulbs i{
-    width:7px;height:7px;border-radius:50%;background:var(--gold);
-    box-shadow:0 0 8px rgba(201,162,39,.8);
-    animation:flick 3.2s infinite;
-  }
-  .bulbs i:nth-child(2n){animation-delay:.4s}
-  .bulbs i:nth-child(3n){animation-delay:.9s;background:var(--sea);box-shadow:0 0 8px rgba(32,178,170,.8)}
-  .bulbs i:nth-child(5n){animation-delay:1.5s}
-  @keyframes flick{0%,90%,100%{opacity:1}94%{opacity:.25}}
-  h1{
-    font-family:"Limelight",cursive;
-    font-weight:400;
-    font-size:clamp(28px,7.5vw,52px);
-    line-height:1.05;
-    letter-spacing:.02em;
-    color:#fff;
-    margin:0 0 14px;
-  }
-  h1 .amp{color:var(--gold)}
-  .sub{
-    font-family:"IBM Plex Mono",monospace;
-    font-size:12px;letter-spacing:.22em;text-transform:uppercase;
-    color:var(--silver-dim);margin:0;
-  }
-  .rule{
-    height:1px;margin:clamp(28px,5vw,40px) 0;
-    background:linear-gradient(90deg,transparent,var(--gold-dim),transparent);
-  }
+  header{padding:36px 0 20px}
+  h1{font-family:Newsreader,Georgia,serif;font-weight:400;font-size:clamp(30px,7vw,44px);letter-spacing:-.02em;margin:0 0 6px;line-height:1.1}
+  .sub{margin:0;color:var(--muted);font-size:15px}
 
-  /* ---- Fill-in bar ---- */
-  .fillin{
-    border:1px solid rgba(201,162,39,.35);
-    background:linear-gradient(180deg,rgba(201,162,39,.07),transparent);
-    border-radius:3px;padding:18px var(--pad);
-    display:flex;flex-wrap:wrap;gap:10px 28px;align-items:center;justify-content:center;
-    font-family:"IBM Plex Mono",monospace;font-size:13px;
-    letter-spacing:.08em;text-transform:uppercase;color:var(--silver-dim);
-  }
-  .fillin b{color:var(--gold);font-weight:600}
-  .fillin input{
-    background:transparent;border:0;border-bottom:1px dashed var(--gold-dim);
-    color:#fff;font-family:inherit;font-size:13px;padding:2px 4px;width:130px;
-  }
-  .fillin input:focus{outline:none;border-bottom-color:var(--sea);border-bottom-style:solid}
+  /* progress */
+  .prog{margin:20px 0 0;display:flex;align-items:center;gap:12px}
+  .bar{flex:1;height:6px;background:#E2DFD4;border-radius:99px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:var(--moss);border-radius:99px;transition:width .3s}
+  .prog b{font-size:13px;font-weight:600;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
 
-  /* ---- Section eyebrow ---- */
-  .eyebrow{
-    display:flex;align-items:baseline;gap:12px;
-    margin:clamp(36px,6vw,56px) 0 14px;
+  /* controls */
+  .controls{position:sticky;top:0;background:var(--bone);padding:14px 0 12px;z-index:5;border-bottom:1px solid var(--line);margin-bottom:16px}
+  #q{
+    width:100%;border:1px solid var(--line);border-radius:10px;background:#fff;
+    padding:11px 14px;font:inherit;font-size:15px;color:var(--ink);
   }
-  .eyebrow .job{
-    font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
-    letter-spacing:.2em;color:var(--sea);white-space:nowrap;
+  #q:focus{outline:none;border-color:var(--clay)}
+  .chips{display:flex;gap:7px;margin-top:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{
+    border:1px solid var(--line);background:#fff;color:var(--ink2);
+    padding:7px 14px;border-radius:99px;font:inherit;font-size:14px;font-weight:500;
+    white-space:nowrap;cursor:pointer;
   }
-  .eyebrow h2{
-    font-family:"Limelight",cursive;font-weight:400;
-    font-size:clamp(18px,4vw,26px);color:#fff;margin:0;letter-spacing:.01em;
-  }
-  .eyebrow .tail{flex:1;height:1px;background:var(--line)}
-  .note{color:var(--silver-dim);font-size:15px;margin:0 0 18px}
-  .note strong{color:var(--sea);font-weight:600}
+  .chip[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
 
-  /* ---- Accordions ---- */
-  details{
-    border:1px solid var(--line);
-    border-radius:3px;
-    background:linear-gradient(180deg,var(--ink-2),var(--ink));
-    margin-bottom:10px;
-    overflow:hidden;
+  /* card */
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:10px}
+  .card.done{opacity:.5}
+  .card.hide{display:none}
+  .top{display:flex;align-items:flex-start;gap:13px;padding:16px}
+  .tick{width:22px;height:22px;flex:0 0 22px;margin-top:2px;accent-color:var(--moss);cursor:pointer}
+  .info{flex:1;min-width:0;cursor:pointer}
+  .name{font-size:17px;font-weight:600;letter-spacing:-.01em;line-height:1.3}
+  .card.done .name{text-decoration:line-through}
+  .where{font-size:14px;color:var(--muted);margin-top:2px}
+  .tags{margin-top:9px;display:flex;flex-wrap:wrap;gap:6px}
+  .tag{font-size:11.5px;font-weight:500;padding:3px 9px;border-radius:99px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+  .tag.g{background:var(--moss-bg);border-color:#CADDD2;color:var(--moss)}
+  .tag.c{background:var(--clay-bg);border-color:#EED9CE;color:#A9552F}
+  .call{
+    flex:0 0 auto;background:var(--clay);color:#fff;text-decoration:none;
+    padding:9px 14px;border-radius:9px;font-size:14px;font-weight:600;margin-top:1px;
   }
-  details[open]{border-color:rgba(201,162,39,.4)}
-  summary{
-    list-style:none;cursor:pointer;
-    padding:16px var(--pad);
-    display:flex;align-items:center;gap:14px;
-    transition:background .18s ease;
-  }
-  summary::-webkit-details-marker{display:none}
-  summary:hover{background:rgba(198,201,206,.04)}
-  summary:focus-visible{outline:2px solid var(--sea);outline-offset:-2px}
-  .rank{
-    font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
-    color:var(--ink);background:var(--gold);
-    width:22px;height:22px;flex:0 0 22px;border-radius:50%;
-    display:grid;place-items:center;
-  }
-  details.alt .rank{background:var(--silver-dim)}
-  .co{flex:1;min-width:0}
-  .co .name{color:#fff;font-weight:600;font-size:17px;line-height:1.2}
-  .co .where{color:var(--silver-dim);font-size:13px;font-family:"IBM Plex Mono",monospace;letter-spacing:.04em}
-  .chev{color:var(--gold-dim);flex:0 0 auto;transition:transform .2s ease;font-size:12px}
-  details[open] .chev{transform:rotate(90deg)}
-  .body{padding:0 var(--pad) 20px;border-top:1px solid var(--line);padding-top:18px}
+  .call:active{opacity:.7}
 
-  /* ---- The phone number: the signature ---- */
-  .tel{
-    display:inline-block;
-    font-family:"IBM Plex Mono",monospace;font-weight:600;
-    font-size:clamp(22px,5.5vw,30px);letter-spacing:.01em;
-    color:var(--gold);text-decoration:none;
-    border-bottom:2px solid rgba(201,162,39,.3);
-    padding-bottom:2px;margin-bottom:16px;
-    transition:color .15s ease,border-color .15s ease;
+  .more{padding:0 16px 16px;display:none}
+  .card.open .more{display:block}
+  .more-in{border-top:1px solid #EFEDE5;padding-top:13px}
+  .more p{margin:0 0 12px;font-size:14.5px;color:var(--ink2)}
+  .more p b{color:var(--ink);font-weight:600}
+  .more .flag{color:#A83E24;font-weight:500}
+  .links{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .links a{
+    font-size:14px;font-weight:500;text-decoration:none;color:var(--ink);
+    background:var(--bone);border:1px solid var(--line);padding:8px 12px;border-radius:8px;
   }
-  .tel:hover,.tel:focus-visible{color:var(--sea);border-bottom-color:var(--sea)}
-  .web{
-    display:block;font-family:"IBM Plex Mono",monospace;
-    font-size:13px;font-weight:400;color:var(--silver-dim);
-    letter-spacing:.04em;margin:-10px 0 16px;
-    overflow-wrap:anywhere;
-  }
-  .web a{color:var(--sea);text-decoration:none;border-bottom:1px solid rgba(32,178,170,.35)}
-  .web a:hover,.web a:focus-visible{color:#fff;border-bottom-color:#fff}
+  .note{width:100%;border:1px solid var(--line);border-radius:9px;padding:9px 11px;font:inherit;font-size:14px;background:var(--bone)}
+  .note:focus{outline:none;border-color:var(--clay);background:#fff}
 
-  dl{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:0 0 16px;font-size:15px}
-  dt{
-    font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;
-    letter-spacing:.16em;text-transform:uppercase;color:var(--silver-dim);
-    padding-top:5px;white-space:nowrap;
-  }
-  dd{margin:0;color:var(--silver)}
-  dd .yes{color:var(--sea);font-weight:600}
-  dd .ask{color:var(--gold);font-weight:600}
-  .tcp{font-family:"IBM Plex Mono",monospace;font-size:13px;color:#fff}
-  .why{
-    border-left:2px solid var(--sea);padding:2px 0 2px 14px;
-    color:var(--silver);font-size:15px;margin:0 0 16px;
-  }
-  .why b{color:#fff}
-
-  .log{
-    display:flex;align-items:center;gap:10px;flex-wrap:wrap;
-    border-top:1px dashed var(--line);padding-top:14px;
-  }
-  .log label{
-    display:flex;align-items:center;gap:8px;cursor:pointer;
-    font-family:"IBM Plex Mono",monospace;font-size:11px;
-    letter-spacing:.16em;text-transform:uppercase;color:var(--silver-dim);
-  }
-  .log input[type=checkbox]{accent-color:var(--sea);width:15px;height:15px;cursor:pointer}
-  .log input[type=text]{
-    flex:1;min-width:150px;background:rgba(0,0,0,.35);
-    border:1px solid var(--line);border-radius:2px;
-    color:#fff;font-family:"Barlow",sans-serif;font-size:14px;padding:7px 10px;
-  }
-  .log input[type=text]:focus{outline:none;border-color:var(--sea)}
-  .log input[type=text]::placeholder{color:#5A6066}
-
-  /* ---- Script card ---- */
-  .script{
-    border:1px solid rgba(32,178,170,.4);border-radius:3px;
-    background:linear-gradient(180deg,rgba(32,178,170,.09),transparent 60%);
-    padding:var(--pad);
-  }
-  .script .quote{
-    border-left:2px solid var(--sea);padding-left:16px;margin:0 0 22px;
-    font-size:17px;
-  }
-  .script .quote p{margin:0 0 12px}
-  .script .quote p:last-child{margin:0}
-  .script .quote b{color:#fff}
-  .script .quote .hot{color:var(--sea);font-weight:600}
-  .script h3{
-    font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
-    letter-spacing:.2em;text-transform:uppercase;color:var(--gold);
-    margin:0 0 12px;
-  }
-  ol.asks{margin:0;padding-left:0;list-style:none;counter-reset:a}
-  ol.asks li{
-    counter-increment:a;position:relative;padding:0 0 10px 34px;font-size:16px;
-  }
-  ol.asks li::before{
-    content:counter(a);position:absolute;left:0;top:1px;
-    font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
-    color:var(--sea);border:1px solid rgba(32,178,170,.5);
-    width:20px;height:20px;border-radius:50%;display:grid;place-items:center;
-  }
-
-  /* ---- Footnotes ---- */
-  .foot summary .co .name{font-size:15px;color:var(--silver)}
-  .foot .body p{margin:0 0 12px;font-size:15px}
-  .foot .body p:last-child{margin:0}
-  .foot .body b{color:#fff}
-  .warn{color:var(--gold)}
-
-  footer{
-    text-align:center;margin-top:clamp(48px,8vw,72px);
-    font-family:"IBM Plex Mono",monospace;font-size:11px;
-    letter-spacing:.18em;text-transform:uppercase;color:#4A5055;
-  }
-  @media (prefers-reduced-motion:reduce){
-    *{animation:none!important;transition:none!important}
-  }
-  @media (max-width:520px){
-    dl{grid-template-columns:1fr;gap:2px}
-    dt{padding-top:10px}
-  }
+  .empty{text-align:center;color:var(--faint);padding:40px 0;font-size:15px;display:none}
+  .empty.show{display:block}
+  footer{margin-top:36px;padding-top:20px;border-top:1px solid var(--line);text-align:center;font-size:13px;color:var(--faint)}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <header>
-  <div class="bulbs" aria-hidden="true">
-    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-  </div>
-  <h1>Shuttle Call Sheet</h1>
-  <p class="sub">Katie <span class="amp">&amp;</span> Grady &middot; Shelterwood, Healdsburg</p>
+  <h1>Shuttle list</h1>
+  <p class="sub">Saturday, October 3 · Shelterwood, Healdsburg</p>
+  <div class="prog"><div class="bar"><i id="fill"></i></div><b id="cnt">0 of 13 called</b></div>
 </header>
 
-<div class="fillin">
-  <span><b>Date:</b> <input type="text" placeholder="__________" aria-label="Wedding date"></span>
-  <span><b>Guests:</b> <input type="text" placeholder="~____" aria-label="Guest count" style="width:70px"></span>
+<div class="controls">
+  <input id="q" type="search" placeholder="Search vendors…" autocomplete="off">
+  <div class="chips">
+    <button class="chip" data-f="all" aria-pressed="true">All 13</button>
+    <button class="chip" data-f="shuttle" aria-pressed="false">Shuttles 7</button>
+    <button class="chip" data-f="cart" aria-pressed="false">Carts 4</button>
+    <button class="chip" data-f="car" aria-pressed="false">Party car 2</button>
+    <button class="chip" data-f="priced" aria-pressed="false">Has pricing 2</button>
+  </div>
 </div>
 
-<div class="eyebrow">
-  <span class="job">SAY THIS</span>
-  <h2>On every call</h2>
-  <span class="tail"></span>
-</div>
+<div id="list">
 
-<div class="script">
-  <div class="quote">
-    <p>"Hi — I'm booking wedding guest shuttles for <b>[DATE]</b>, about <b>[#]</b> guests.</p>
-    <p><b>Route:</b> a loop between three downtown Healdsburg hotels — Hotel Trio, Dry Creek Inn, and Hotel Vinea / Travelodge — and our venue, Shelterwood, about 20 minutes out.</p>
-    <p><b>Schedule:</b> every 30 minutes, <span class="hot">3:30–5:00 pm</span>, then again <span class="hot">9:00 pm–1:00 am</span>. Split shift, ends at 1 am.</p>
-    <p><b>One thing to know:</b> the access road is <span class="hot">narrow, unpaved, steep, and unlit</span>. What size vehicle do you recommend for that?"</p>
+  <!-- SHUTTLES -->
+  <div class="card" data-cat="shuttle">
+    <div class="top">
+      <input class="tick" type="checkbox">
+      <div class="info">
+        <div class="name">Pure Luxury Transportation</div>
+        <div class="where">Petaluma · 130+ vehicles</div>
+        <div class="tags"><span class="tag g">TCP 12878</span><span class="tag g">Runs past 1am</span><span class="tag">Quote only</span></div>
+      </div>
+      <a class="call" href="tel:+18006265466">Call</a>
+    </div>
+    <div class="more"><div class="more-in">
+      <p><b>Call first.</b> Biggest fleet in the region — Sprinters, mini-coaches, shuttle buses, limos. Known for last-minute swaps and multi-hotel loops. Can do the party car on the same contract.</p>
+      <div class="links"><a href="tel:+18006265466">800-626-5466</a><a href="https://pureluxury.com" target="_blank" rel="noopener">pureluxury.com ↗</a></div>
+      <input class="note" placeholder="Quote / notes">
+    </div></div>
   </div>
-  <h3>Then ask all five</h3>
-  <ol class="asks">
-    <li>Can you run until 1 am? Any late or overtime fee?</li>
-    <li>What's your TCP number? <em>(California license — no number, no booking.)</em></li>
-    <li>Minimum hours? How does the split shift bill — do we pay for the 4-hour gap?</li>
-    <li>Deposit and cancellation policy?</li>
-    <li>Can you send a Certificate of Insurance naming the venue?</li>
-  </ol>
-</div>
 
-<div class="rule"></div>
-
-<!-- ============ JOB 1 ============ -->
-<div class="eyebrow">
-  <span class="job">JOB 01</span>
-  <h2>Hotel &rarr; Venue shuttle</h2>
-  <span class="tail"></span>
-</div>
-<p class="note">The big one. Work down the list until two say yes, then compare. <strong>Skip anything 45+ passengers</strong> — a full motorcoach can't turn around on that road. Several Sprinters looping beats one big bus.</p>
-
-<details open>
-  <summary><span class="rank">1</span><span class="co"><span class="name">Pure Luxury Transportation</span><span class="where">Petaluma</span></span><span class="chev">&#10148;</span></summary>
-  <div class="body">
-    <a class="tel" href="tel:+18006265466">800-626-5466</a><span class="web">pureluxury.com &middot; alt 707-775-2920</span>
-    <dl>
-      <dt>Fleet</dt><dd>130+ vehicles — Sprinters, mini-coaches, shuttle buses, limos</dd>
-      <dt>Past 1am</dt><dd><span class="yes">Yes</span></dd>
-      <dt>Dirt road</dt><dd>Ask for a Sprinter or mini-coach</dd>
-      <dt>TCP</dt><dd class="tcp">12878</dd>
-    </dl>
-    <p class="why"><b>Call first.</b> Biggest fleet in the region — 17th largest in the US. Reviews specifically praise last-minute vehicle swaps and multi-hotel guest loops to remote venues. Can cover the loop <em>and</em> the wedding-party limo on one contract.</p>
-    <div class="log">
-      <label><input type="checkbox"> Called</label>
-      <input type="text" placeholder="Quote / who I spoke to / next step">
+  <div class="card" data-cat="shuttle">
+    <div class="top">
+      <input class="tick" type="checkbox">
+      <div class="info">
+        <div class="name">Sonoma Sterling Limousines</div>
+        <div class="where">Santa Rosa · 27 vehicles, 1–27 pax</div>
+        <div class="tags"><span class="tag g">TCP 20374-A</span><span class="tag g">Runs past 1am</span><span class="tag c">5-hr minimum</span></div>
+      </div>
+      <a class="call" href="tel:+17075425444">Call</a>
     </div>
+    <div class="more"><div class="more-in">
+      <p>Family-owned, has a wedding specialist. Drivers experienced on narrow winding roads. <span class="flag">Five-hour minimum</span> — ask how that bills against the split shift.</p>
+      <div class="links"><a href="tel:+17075425444">707-542-5444</a><a href="https://sonomasterlinglimo.com" target="_blank" rel="noopener">sonomasterlinglimo.com ↗</a></div>
+      <input class="note" placeholder="Quote / notes">
+    </div></div>
   </div>
-</details>
 
-<details>
-  <summary><span class="rank">2</span><span class="co"><span class="name">Sonoma Sterling Limousines</span><span class="where">Santa Rosa</span></span><span class="chev">&#10148;</span></summary>
-  <div class="body">
-    <a class="tel" href="tel:+17075425444">707-542-5444</a><span class="web">sonomasterlinglimo.com</span>
-    <dl>
-      <dt>Fleet</dt><dd>27 vehicles, 1–27 passengers — Sprinters, executive shuttles, limos</dd>
-      <dt>Past 1am</dt><dd><span class="yes">Yes</span></dd>
-      <dt>Dirt road</dt><dd>Drivers experienced on narrow / winding roads</dd>
-      <dt>TCP</dt><dd class="tcp">20374-A</dd>
-    </dl>
-    <p class="why">Family-owned, has a dedicated <b>wedding specialist</b>, larger shuttles run SPAB-certified drivers. <span class="warn">Heads up: 5-hour minimum</span> — ask how that plays with the split shift.</p>
-    <div class="log">
-      <label><input type="checkbox"> Called</label>
-      <input type="text" placeholder="Quote / who I spoke to / next step">
+  <div class="card" data-cat="shuttle">
+    <div class="top">
+      <input class="tick" type="checkbox">
+      <div class="info">
+        <div class="name">Beau Wine Tours</div>
+        <div class="where">Sonoma · handles 1 to 300</div>
+        <div class="tags"><span class="tag g">TCP 14726</span><span class="tag g">Open 24 hours</span><span class="tag">Quote only</span></div>
+      </div>
+      <a class="call" href="tel:+17079388001">Call</a>
     </div>
+    <div class="more"><div class="more-in">
+      <p>Sprinters, Sprinter limos, shuttles, coaches. Carries <b>$10M liability</b>, well above the state floor. The 24-hour operation fits a 1am finish.</p>
+      <div class="links"><a href="tel:+17079388001">707-938-8001</a><a href="https://beauwinetours.com" target="_blank" rel="noopener">beauwinetours.com ↗</a></div>
+      <input class="note" placeholder="Quote / notes">
+    </div></div>
   </div>
-</details>
 
-<details>
-  <summary><span class="rank">3</span><span class="co"><span class="name">Beau Wine Tours</span><span class="where">Sonoma</span></span><span class="chev">&#10148;</span></summary>
-  <div class="body">
-    <a class="tel" href="tel:+17079388001">707-938-8001</a><span class="web">beauwinetours.com &middot; toll-free 800-387-2328</span>
-    <dl>
-      <dt>Fleet</dt><dd>Sprinters, Sprinter limos, shuttles, coaches — handles 1 to 300</dd>
-      <dt>Past 1am</dt><dd><span class="yes">Open 24 hours</span></dd>
-      <dt>Dirt road</dt><dd>Ask for a Sprinter</dd>
-      <dt>TCP</dt><dd class="tcp">14726</dd>
-    </dl>
-    <p class="why">Carries a <b>$10M</b> liability policy, well above the state floor. The 24-hour operation makes them the natural fit for a 1 am finish.</p>
-    <div class="log">
-      <label><input type="checkbox"> Called</label>
-      <input type="text" placeholder="Quote / who I spoke to / next step">
+  <div class="card" data-cat="shuttle priced">
+    <div class="top">
+      <input class="tick" type="checkbox">
+      <div class="info">
+        <div class="name">Thunderstar Charter</div>
+        <div class="where">Cotati · 9-pax vans, 28-pax minibuses</div>
+        <div class="tags"><span class="tag c">~$1,800 reported</span><span class="tag g">Fits the road</span><span class="tag">TCP: ask</span></div>
+      </div>
+      <a class="call" href="tel:+17075416295">Call</a>
     </div>
+    <div class="more"><div class="more-in">
+      <p>The value play. A couple reported <b>~$1,800</b> for two buses plus a van — that's a review, not a quote. Wedding-focused since 1997, often recommended by venues. No full coaches, so everything fits the road.</p>
+      <div class="links"><a href="tel:+17075416295">707-541-6295</a><a href="https://thunderstarcharter.com" target="_blank" rel="noopener">thunderstarcharter.com ↗</a></div>
+      <input class="note" placeholder="Quote / notes">
+    </div></div>
   </div>
-</details>
 
-<details>
-  <summary><span class="rank">4</span><span class="co"><span class="name">Thunderstar Charter</span><span class="where">Cotati &middot; budget pick</span></span><span class="chev">&#10148;</span></summary>
-  <div class="body">
-    <a class="tel" href="tel:+17075416295">707-541-6295</a><span class="web">thunderstarcharter.com &middot; ask for Anne Picchi</span>
-    <dl>
-      <dt>Fleet</dt><dd>9-passenger vans + 28-passenger minibuses</dd>
-      <dt>Past 1am</dt><dd><span class="ask">Ask</span></dd>
-      <dt>Dirt road</dt><dd>Well-sized for it — no full coaches</dd>
-      <dt>TCP</dt><dd class="ask">Ask</dd>
-    </dl>
-    <p class="why"><b>The value play.</b> One couple reported two buses plus a van for around <b>$1,800 total</b>. Wedding-focused, family-owned since 1997, often recommended by venues. Reviews praise late schedule changes without drama.</p>
-    <div class="log">
-      <label><input type="checkbox"> Called</label>
-      <input type="text" placeholder="Quote / who I spoke to / next step">
+  <div class="card" data-cat="shuttle">
+    <div class="top">
+      <input class="tick" type="checkbox">
+      <div class="info">
+        <div class="name">California Wine Tours (CWT)</div>
+        <div class="where">Napa · 160 vehicles, ADA available</div>
+        <div class="tags"><span class="tag g">TCP 9679</span><span class="tag">Quote only</span></div>
+      </div>
+      <a class="call" href="tel:+17072531300">Call</a>
     </div>
+    <div class="more"><div class="more-in">
+      <p>Called the go-to by local wedding coordinators. Offers <b>site visits and a day-of coordinator</b> — worth it if you run multiple vehicles.</p>
+      <div class="links"><a href="tel:+17072531300">707-253-1300</a><a href="https://californiawinetours.com" target="_blank" rel="noopener">californiawinetours.com ↗</a></div>
+      <input class="note" placeholder="Quote / notes">
+    </div></div>
   </div>
-</details>
 
-<details>
-  <summary><span class="rank">5</span><span class="co"><span class="name">CWT / California Wine Tours</span><span class="where">Napa &middot; if headcount is big</span></span><span class="chev">&#10148;</span></summary>
-  <div class="body">
-    <a class="tel" href="tel:+17072531300">707-253-1300</a><span class="web">californiawinetours.com</span>
-    <dl>
-      <dt>Fleet</dt><dd>160 vehicles including wheelchair-accessible buses</dd>
-      <dt>Past 1am</dt><dd><span class="ask">Ask</span></dd>
-      <dt>Dirt road</dt><dd>Ask for a luxury van</dd>
-      <dt>TCP</dt><dd class="tcp">9679</dd>
-    </dl>
-    <p class="why">Called the go-to by local wedding coordinators. Offers <b>site visits and a day-of coordinator</b> — worth it if we're running multiple vehicles.</p>
-    <div class="log">
-      <label><input type="checkbox"> Called</label>
-      <input type="text" placeholder="Quote / who I spoke to / next step">
+  <div class="card" data-cat="shuttle">
+    <div class="top">
+      <input class="tick" type="checkbox">
+      <div class="info">
+        <div class="name">Executive Charters</div>
+        <div class="where">Santa Rosa · limos, party buses to ~20</div>
+        <div class="tags"><span class="tag">TCP: ask</span><span class="tag">Quote only</span></div>
+      </div>
+      <a class="call" href="tel:+17074337771">Call</a>
     </div>
+    <div class="more"><div class="more-in">
+      <p>Explicitly serves Healdsburg. A couple credited them with juggling multi-hotel pickups on a tight budget.</p>
+      <div class="links"><a href="tel:+17074337771">707-433-7771</a><a href="https://santarosalimoservice.com" target="_blank" rel="noopener">santarosalimoservice.com ↗</a></div>
+      <input class="note" placeholder="Quote / notes">
+    </div></div>
   </div>
-</details>
 
-<details class="alt">
-  <summary><span class="rank">6</span><span class="co"><span class="name">Executive Charters</span><span class="where">Santa Rosa</span></span><span class="chev">&#10148;</span></summary>
-  <div class="body">
-    <a class="tel" href="tel:+17074337771">707-433-7771</a><span class="web">santarosalimoservice.com</span>
-    <dl>
-      <dt>Fleet</dt><dd>Limos, party buses up to ~20</dd>
-      <dt>Past 1am</dt><dd><span class="ask">Ask</span></dd>
-      <dt>TCP</dt><dd class="ask">Ask</dd>
-    </dl>
-    <p class="why">Explicitly serves Healdsburg. A couple credited them with juggling multi-hotel pickups on a tight budget.</p>
-    <div class="log">
-      <label><input type="checkbox"> Called</label>
-      <input type="text" placeholder="Quote / who I spoke to / next step">
+  <div class="card" data-cat="shuttle priced">
+    <div class="top">
+      <input class="tick" type="checkbox">
+      <div class="info">
+        <div class="name">SONA Concierge</div>
+        <div class="where">Sprinters and SUVs</div>
+        <div class="tags"><span class="tag c">$210/hr Sprinter</span><span class="tag c">$135/hr SUV</span><span class="tag g">TCP 44687-B</span></div>
+      </div>
+      <a class="call" href="https://sonaconcierge.com" target="_blank" rel="noopener">Open</a>
     </div>
+    <div class="more"><div class="more-in">
+      <p>The only one publishing real numbers — <b>all-in, tax and standard gratuity included.</b> Useful as a price benchmark even if you book elsewhere.</p>
+      <div class="links"><a href="https://sonaconcierge.com" target="_blank" rel="noopener">sonaconcierge.com ↗</a></div>
+      <input class="note" placeholder="Quote / notes">
+    </div></div>
   </div>
-</details>
 
-<details class="alt">
-  <summary><span class="rank">7</span><span class="co"><span class="name">SONA Concierge</span><span class="where">Published pricing</span></span><span class="chev">&#10148;</span></summary>
-  <div class="body">
-    <a class="tel" href="https://sonaconcierge.com">sonaconcierge.com</a><span class="web">contact via site</span>
-    <dl>
-      <dt>Fleet</dt><dd>Sprinter vans, SUVs, Sprinter limos, party buses</dd>
-      <dt>Rates</dt><dd><b>Sprinter $210/hr &middot; SUV $135/hr</b> — all-in, tax and standard gratuity included</dd>
-      <dt>TCP</dt><dd class="tcp">44687-B</dd>
-    </dl>
-    <p class="why">The only one publishing real numbers. Useful as a <b>price benchmark</b> even if we book elsewhere.</p>
-    <div class="log">
-      <label><input type="checkbox"> Called</label>
-      <input type="text" placeholder="Quote / who I spoke to / next step">
+  <!-- CARTS -->
+  <div class="card" data-cat="cart">
+    <div class="top">
+      <input class="tick" type="checkbox">
+      <div class="info">
+        <div class="name">Wine Country VIP Carts</div>
+        <div class="where">Santa Rosa · 4, 6 &amp; 8-seat electric</div>
+        <div class="tags"><span class="tag g">Wheelchair cart</span><span class="tag c">Confirm the grade</span></div>
+      </div>
+      <a class="call" href="tel:+17078472278">Call</a>
     </div>
+    <div class="more"><div class="more-in">
+      <p>Event carts plus one <b>wheelchair-accessible with ramp and tie-downs.</b> Built for winery lawns though — <span class="flag">ask if they handle a steep gravel grade.</span></p>
+      <div class="links"><a href="tel:+17078472278">707-847-2278</a><a href="https://winecountrycarts.com" target="_blank" rel="noopener">winecountrycarts.com ↗</a></div>
+      <input class="note" placeholder="Can they do the grade?">
+    </div></div>
   </div>
-</details>
 
-<!-- ============ JOB 2 ============ -->
-<div class="eyebrow">
-  <span class="job">JOB 02</span>
-  <h2>On-site carts</h2>
-  <span class="tail"></span>
-</div>
-<p class="note">Moving people up the mountain to camping and the after-party. Ask every one of them point blank: <strong>"Steep gravel grade, unlit, at night — can your carts actually do that?"</strong> If they hesitate, go UTV. And we need sober designated cart drivers — nobody's driving a UTV down a hillside at 1am after the open bar.</p>
-
-<details>
-  <summary><span class="rank">1</span><span class="co"><span class="name">Wine Country VIP Carts</span><span class="where">Santa Rosa</span></span><span class="chev">&#10148;</span></summary>
-  <div class="body">
-    <a class="tel" href="tel:+17078472278">707-847-2278</a><span class="web">winecountrycarts.com &middot; vipcartssantarosa@crescorent.com</span>
-    <dl>
-      <dt>Have</dt><dd>4, 6 and 8-seat electric event carts + one wheelchair-accessible with ramp and tie-downs</dd>
-      <dt>Terrain</dt><dd class="ask">Built for winery lawns — confirm the grade</dd>
-    </dl>
-    <p class="why">Purpose-built for weddings, delivery is core to their model. The <b>accessible cart</b> is a real find — worth locking in regardless.</p>
-    <div class="log">
-      <label><input type="checkbox"> Called</label>
-      <input type="text" placeholder="Quote / can they do the grade?">
+  <div class="card" data-cat="cart">
+    <div class="top">
+      <input class="tick" type="checkbox">
+      <div class="info">
+        <div class="name">Event Services Plus</div>
+        <div class="where">Rohnert Park · 4 &amp; 6-person carts</div>
+        <div class="tags"><span class="tag g">Supplies drivers</span></div>
+      </div>
+      <a class="call" href="tel:+17073037224">Call</a>
     </div>
+    <div class="more"><div class="more-in">
+      <p>Event-transport specialists. <b>They supply chauffeurs and attendants</b> — so you don't have to find sober cart drivers.</p>
+      <div class="links"><a href="tel:+17073037224">707-303-7224</a><a href="https://esprentals.net" target="_blank" rel="noopener">esprentals.net ↗</a></div>
+      <input class="note" placeholder="Notes">
+    </div></div>
   </div>
-</details>
 
-<details>
-  <summary><span class="rank">2</span><span class="co"><span class="name">Event Services Plus</span><span class="where">Rohnert Park</span></span><span class="chev">&#10148;</span></summary>
-  <div class="body">
-    <a class="tel" href="tel:+17073037224">707-303-7224</a><span class="web">esprentals.net &middot; info@esprentals.net</span>
-    <dl>
-      <dt>Have</dt><dd>4 and 6-person carts, chauffeured service, attendants and greeters</dd>
-      <dt>Terrain</dt><dd class="ask">Confirm</dd>
-    </dl>
-    <p class="why">Event-transport specialists. <b>They supply drivers</b> — which solves the sober-driver problem for us.</p>
-    <div class="log">
-      <label><input type="checkbox"> Called</label>
-      <input type="text" placeholder="Quote / can they do the grade?">
+  <div class="card" data-cat="cart">
+    <div class="top">
+      <input class="tick" type="checkbox">
+      <div class="info">
+        <div class="name">A-Action Rents</div>
+        <div class="where">Healdsburg · closest yard, in town</div>
+        <div class="tags"><span class="tag g">Rugged</span></div>
+      </div>
+      <a class="call" href="tel:+17074313544">Call</a>
     </div>
+    <div class="more"><div class="more-in">
+      <p>In town, family-owned since 1974, <b>closest yard to the venue by a mile.</b> Ask about UTVs and gators — the online catalog is construction-focused.</p>
+      <div class="links"><a href="tel:+17074313544">707-431-3544</a><a href="https://aactionrents.com" target="_blank" rel="noopener">aactionrents.com ↗</a></div>
+      <input class="note" placeholder="Do they stock UTVs?">
+    </div></div>
   </div>
-</details>
 
-<details>
-  <summary><span class="rank">3</span><span class="co"><span class="name">A-Action Rents</span><span class="where">Healdsburg &middot; closest yard</span></span><span class="chev">&#10148;</span></summary>
-  <div class="body">
-    <a class="tel" href="tel:+17074313544">707-431-3544</a><span class="web">aactionrents.com &middot; 1427 Grove St, Healdsburg</span>
-    <dl>
-      <dt>Have</dt><dd>Ask about UTVs and gators — catalog online is construction-focused</dd>
-      <dt>Terrain</dt><dd><span class="yes">Rugged — the right tool if the grade is real</span></dd>
-    </dl>
-    <p class="why">In town. Family-owned since 1974, delivers across Sonoma. <b>Closest yard to the venue</b> by a mile.</p>
-    <div class="log">
-      <label><input type="checkbox"> Called</label>
-      <input type="text" placeholder="Do they stock UTVs? Rate?">
+  <div class="card" data-cat="cart">
+    <div class="top">
+      <input class="tick" type="checkbox">
+      <div class="info">
+        <div class="name">United Rentals</div>
+        <div class="where">Santa Rosa · 4WD diesel UTVs, 6 pax</div>
+        <div class="tags"><span class="tag g">Real off-road</span><span class="tag c">Closed weekends</span></div>
+      </div>
+      <a class="call" href="tel:+17075857621">Call</a>
     </div>
+    <div class="more"><div class="more-in">
+      <p>Genuine 4WD UTVs plus gas and electric golf carts. <span class="flag">Branch is closed weekends</span> — schedule a weekday delivery.</p>
+      <div class="links"><a href="tel:+17075857621">707-585-7621</a></div>
+      <input class="note" placeholder="Delivery day">
+    </div></div>
   </div>
-</details>
 
-<details>
-  <summary><span class="rank">4</span><span class="co"><span class="name">United Rentals</span><span class="where">Santa Rosa</span></span><span class="chev">&#10148;</span></summary>
-  <div class="body">
-    <a class="tel" href="tel:+17075857621">707-585-7621</a><span class="web">3939 S Moorland Ave &middot; Cloverdale branch: 707-894-8880</span>
-    <dl>
-      <dt>Have</dt><dd>4WD diesel UTVs, 6 passengers, 25 mph — plus gas and electric golf carts</dd>
-      <dt>Terrain</dt><dd><span class="yes">Genuine off-road capability</span></dd>
-    </dl>
-    <p class="why"><span class="warn">Branch is closed weekends</span> — schedule a weekday delivery for a weekend wedding or it won't happen.</p>
-    <div class="log">
-      <label><input type="checkbox"> Called</label>
-      <input type="text" placeholder="Quote / delivery day">
+  <!-- PARTY CAR -->
+  <div class="card" data-cat="car">
+    <div class="top">
+      <input class="tick" type="checkbox">
+      <div class="info">
+        <div class="name">Windsor Wine Tours — "Ian"</div>
+        <div class="where">Owner-operator · Navigator (7) or van (9)</div>
+      </div>
+      <a class="call" href="https://windsorwinetours.com" target="_blank" rel="noopener">Open</a>
     </div>
+    <div class="more"><div class="more-in">
+      <p>Two vehicles, one guy, replies in minutes. The closest thing to "someone with a van" that's still a real business.</p>
+      <div class="links"><a href="https://windsorwinetours.com" target="_blank" rel="noopener">windsorwinetours.com ↗</a></div>
+      <input class="note" placeholder="Notes">
+    </div></div>
   </div>
-</details>
 
-<!-- ============ JOB 3 ============ -->
-<div class="eyebrow">
-  <span class="job">JOB 03</span>
-  <h2>Wedding party car</h2>
-  <span class="tail"></span>
-</div>
-<p class="note">Hotel Trio &rarr; venue. <strong>Easiest move: add it to whoever wins Job 01</strong> — one contract, one deposit, one thing to chase.</p>
-
-<details class="alt">
-  <summary><span class="rank">1</span><span class="co"><span class="name">Windsor Wine Tours &mdash; "Ian"</span><span class="where">Owner-operator</span></span><span class="chev">&#10148;</span></summary>
-  <div class="body">
-    <a class="tel" href="https://windsorwinetours.com">windsorwinetours.com</a><span class="web">contact via site</span>
-    <dl>
-      <dt>Have</dt><dd>Lincoln Navigator (7) or a van (9)</dd>
-    </dl>
-    <p class="why">Two vehicles, one guy, replies in minutes. <b>The closest thing to "some dude with a van"</b> that's still a real business.</p>
-    <div class="log">
-      <label><input type="checkbox"> Called</label>
-      <input type="text" placeholder="Notes">
+  <div class="card" data-cat="car">
+    <div class="top">
+      <input class="tick" type="checkbox">
+      <div class="info">
+        <div class="name">Five Star Limousine</div>
+        <div class="where">Healdsburg · limos and vans, local</div>
+        <div class="tags"><span class="tag">TCP: ask</span></div>
+      </div>
+      <a class="call" href="tel:+17074339721">Call</a>
     </div>
+    <div class="more"><div class="more-in">
+      <p>Based in 95448 — in town. Verify the TCP.</p>
+      <div class="links"><a href="tel:+17074339721">707-433-9721</a></div>
+      <input class="note" placeholder="Notes">
+    </div></div>
   </div>
-</details>
-
-<details class="alt">
-  <summary><span class="rank">2</span><span class="co"><span class="name">Five Star Limousine</span><span class="where">Healdsburg</span></span><span class="chev">&#10148;</span></summary>
-  <div class="body">
-    <a class="tel" href="tel:+17074339721">707-433-9721</a><span class="web">Local — based in 95448</span>
-    <p class="why">Limos and vans, in town. Verify the TCP.</p>
-    <div class="log">
-      <label><input type="checkbox"> Called</label>
-      <input type="text" placeholder="Notes">
-    </div>
-  </div>
-</details>
-
-<details class="alt">
-  <summary><span class="rank">3</span><span class="co"><span class="name">Vines and Rides</span><span class="where">For the photos</span></span><span class="chev">&#10148;</span></summary>
-  <div class="body">
-    <p class="why">Electric VW ID.Buzz. Not the practical choice — but it'd look <b>very good</b> on a red carpet.</p>
-    <div class="log">
-      <label><input type="checkbox"> Called</label>
-      <input type="text" placeholder="Notes">
-    </div>
-  </div>
-</details>
-
-<div class="rule"></div>
-
-<!-- ============ FOOTNOTES ============ -->
-<div class="eyebrow">
-  <span class="job">FYI</span>
-  <h2>Read once, then forget</h2>
-  <span class="tail"></span>
-</div>
-
-<div class="foot">
-  <details>
-    <summary><span class="rank">$</span><span class="co"><span class="name">What this should cost</span></span><span class="chev">&#10148;</span></summary>
-    <div class="body">
-      <p>Shuttle vans and mini-coaches run <b>$100–300/hr per vehicle</b>, with 3–5 hour minimums. A whole shuttle program typically lands <b>$600–2,500</b>; multi-vehicle setups <b>$1,500–4,000+</b>. Limo is $75–150/hr.</p>
-      <p>Carts are quote-based locally — the national benchmark is roughly <b>$375–500 per cart plus ~$250 delivery</b>. 4x4 UTVs around $200/day.</p>
-      <p class="warn">Add 18–20% gratuity, fuel surcharges, and possible overtime for the 1 am end. Get itemized quotes — the sticker rate is never the number.</p>
-    </div>
-  </details>
-
-  <details>
-    <summary><span class="rank">!</span><span class="co"><span class="name">Book now, not later</span></span><span class="chev">&#10148;</span></summary>
-    <div class="body">
-      <p>Sonoma peak season is <b>April through October</b> and Saturdays sell out — Sprinters especially, since they're what everyone wants for hill venues. Standard advice is <b>3–6 months ahead</b>.</p>
-      <p>Last-minute is possible with the big operators, but it costs more and you take whatever vehicle is left.</p>
-    </div>
-  </details>
-
-  <details>
-    <summary><span class="rank">&#9878;</span><span class="co"><span class="name">Why we can't just use a guy with a van</span></span><span class="chev">&#10148;</span></summary>
-    <div class="body">
-      <p>California requires a CPUC <b>TCP permit</b> for anyone driving passengers for money. Licensed carriers carry $750K–$5M in liability (the $5M tier kicks in at 16+ passenger vehicles).</p>
-      <p>An unlicensed operator is driving illegally, almost certainly has no commercial insurance, and if something happens on that road in the dark, <span class="warn">we're the ones exposed</span>. Fun as it sounds — licensed carriers only for passengers.</p>
-      <p>Save the informal help for hauling décor. That part we can absolutely crowdsource.</p>
-    </div>
-  </details>
-
-  <details>
-    <summary><span class="rank">&#9906;</span><span class="co"><span class="name">Confirm the address before anyone drives</span></span><span class="chev">&#10148;</span></summary>
-    <div class="body">
-      <p>Two properties near Healdsburg use the <b>Shelterwood</b> name — the old Mill Creek glamping camp (lost in the 2020 Walbridge Fire) and Shelterwood Collective, a 900-acre forest above the Russian River.</p>
-      <p>Send every driver the <b>exact GPS pin, gate code, and a venue contact</b>. Cell service is thin up there — if they get lost at 12:40 am, nobody's reaching anybody.</p>
-    </div>
-  </details>
-
-  <details>
-    <summary><span class="rank">&#9888;</span><span class="co"><span class="name">Brokers vs. the actual company</span></span><span class="chev">&#10148;</span></summary>
-    <div class="body">
-      <p>CharterUP, National Charter Bus, Price4Limo and similar are <b>marketplaces</b> — they subcontract to whoever's free. Quotes come back fast, which is tempting.</p>
-      <p>But confirm who's actually showing up, their TCP, and whether <em>that specific vehicle</em> fits the road, before any deposit changes hands.</p>
-    </div>
-  </details>
-</div>
-
-<footer>Pack it in &middot; pack it out &middot; don't forget your lights</footer>
 
 </div>
+<p class="empty" id="empty">Nothing matches that.</p>
+
+<footer>13 vendors · Sonoma County · tap any number to call</footer>
+
+</div>
+
+<script>
+  const cards = [...document.querySelectorAll('.card')];
+  const chips = [...document.querySelectorAll('.chip')];
+  const q = document.getElementById('q');
+  const empty = document.getElementById('empty');
+  let filter = 'all';
+
+  // expand on tap
+  cards.forEach(c => {
+    c.querySelector('.info').addEventListener('click', () => c.classList.toggle('open'));
+    c.querySelector('.tick').addEventListener('change', e => {
+      c.classList.toggle('done', e.target.checked);
+      progress();
+    });
+  });
+
+  // filter chips
+  chips.forEach(b => b.addEventListener('click', () => {
+    chips.forEach(x => x.setAttribute('aria-pressed', x === b));
+    filter = b.dataset.f;
+    apply();
+  }));
+
+  q.addEventListener('input', apply);
+
+  function apply(){
+    const term = q.value.trim().toLowerCase();
+    let shown = 0;
+    cards.forEach(c => {
+      const catOk = filter === 'all' || c.dataset.cat.includes(filter);
+      const textOk = !term || c.textContent.toLowerCase().includes(term);
+      const show = catOk && textOk;
+      c.classList.toggle('hide', !show);
+      if (show) shown++;
+    });
+    empty.classList.toggle('show', shown === 0);
+  }
+
+  function progress(){
+    const done = cards.filter(c => c.querySelector('.tick').checked).length;
+    document.getElementById('cnt').textContent = done + ' of ' + cards.length + ' called';
+    document.getElementById('fill').style.width = (done / cards.length * 100) + '%';
+  }
+  progress();
+</script>
 </body>
 </html>

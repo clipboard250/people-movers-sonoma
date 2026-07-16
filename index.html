@@ -2,400 +2,516 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FFFFFF">
 <title>Shuttle List — Oct 3</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bone:#F0EEE6;--white:#fff;--ink:#141413;--ink2:#3D3D3A;
-    --muted:#6C6B66;--faint:#9A988F;--line:#DEDBD1;
-    --clay:#D97757;--clay-bg:#F7EDE7;--moss:#3D7A5C;--moss-bg:#E8F0EB;
+    --green:#00A15C;
+    --green-dark:#00874D;
+    --green-bg:#E6F5EE;
+    --ink:#0D1B14;
+    --body:#5A6560;
+    --faint:#9AA3A0;
+    --line:#E8E8E8;
+    --hair:#F2F2F2;
+    --amber:#B4690E;
+    --amber-bg:#FDF3E3;
+    --red:#C0392B;
+    --tab-h:76px;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{-webkit-text-size-adjust:100%}
   body{
-    margin:0;background:var(--bone);color:var(--ink);
-    font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;
-    font-size:16px;line-height:1.5;overflow-wrap:anywhere;
+    margin:0;background:#fff;color:var(--ink);
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:17px;line-height:1.5;overflow-wrap:anywhere;
+    padding-bottom:calc(var(--tab-h) + env(safe-area-inset-bottom));
   }
-  .wrap{max-width:640px;margin:0 auto;padding:0 18px 80px}
+  .wrap{max-width:560px;margin:0 auto;padding:0 20px}
 
-  header{padding:36px 0 20px}
-  h1{font-family:Newsreader,Georgia,serif;font-weight:400;font-size:clamp(30px,7vw,44px);letter-spacing:-.02em;margin:0 0 6px;line-height:1.1}
-  .sub{margin:0;color:var(--muted);font-size:15px}
+  /* ---- header ---- */
+  header{padding:28px 0 8px}
+  .eyebrow{
+    display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--green);background:var(--green-bg);
+    padding:5px 11px;border-radius:99px;margin-bottom:14px;
+  }
+  h1{font-size:32px;font-weight:700;letter-spacing:-.03em;line-height:1.1;margin:0 0 6px}
+  .sub{margin:0;color:var(--body);font-size:16px}
 
-  /* progress */
-  .prog{margin:20px 0 0;display:flex;align-items:center;gap:12px}
-  .bar{flex:1;height:6px;background:#E2DFD4;border-radius:99px;overflow:hidden}
-  .bar i{display:block;height:100%;width:0;background:var(--moss);border-radius:99px;transition:width .3s}
-  .prog b{font-size:13px;font-weight:600;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+  /* ---- progress card ---- */
+  .progcard{
+    border:1px solid var(--line);border-radius:18px;padding:18px 20px;margin:22px 0 18px;
+  }
+  .progtop{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:12px}
+  .progtop b{font-size:19px;font-weight:700;letter-spacing:-.02em}
+  .progtop span{font-size:14px;color:var(--faint);font-weight:500;font-variant-numeric:tabular-nums}
+  .bar{height:8px;background:var(--hair);border-radius:99px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:var(--green);border-radius:99px;transition:width .35s cubic-bezier(.4,0,.2,1)}
 
-  /* controls */
-  .controls{position:sticky;top:0;background:var(--bone);padding:14px 0 12px;z-index:5;border-bottom:1px solid var(--line);margin-bottom:16px}
+  /* ---- search ---- */
+  .searchwrap{position:relative;margin-bottom:18px}
   #q{
-    width:100%;border:1px solid var(--line);border-radius:10px;background:#fff;
-    padding:11px 14px;font:inherit;font-size:15px;color:var(--ink);
+    width:100%;border:1px solid var(--line);border-radius:14px;background:#fff;
+    padding:14px 16px 14px 44px;font:inherit;font-size:16px;color:var(--ink);
   }
-  #q:focus{outline:none;border-color:var(--clay)}
-  .chips{display:flex;gap:7px;margin-top:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
-  .chips::-webkit-scrollbar{display:none}
-  .chip{
-    border:1px solid var(--line);background:#fff;color:var(--ink2);
-    padding:7px 14px;border-radius:99px;font:inherit;font-size:14px;font-weight:500;
-    white-space:nowrap;cursor:pointer;
+  #q::placeholder{color:var(--faint)}
+  #q:focus{outline:none;border-color:var(--ink)}
+  .searchwrap svg{
+    position:absolute;left:15px;top:50%;transform:translateY(-50%);
+    width:18px;height:18px;stroke:var(--faint);fill:none;stroke-width:2;pointer-events:none;
   }
-  .chip[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
 
-  /* card */
-  .card{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:10px}
-  .card.done{opacity:.5}
+  /* ---- card ---- */
+  .card{
+    border:1px solid var(--line);border-radius:18px;margin-bottom:12px;
+    transition:border-color .15s,opacity .2s;
+  }
+  .card.open{border-color:#D5D5D5}
+  .card.done{opacity:.45}
   .card.hide{display:none}
-  .top{display:flex;align-items:flex-start;gap:13px;padding:16px}
-  .tick{width:22px;height:22px;flex:0 0 22px;margin-top:2px;accent-color:var(--moss);cursor:pointer}
-  .info{flex:1;min-width:0;cursor:pointer;border-radius:8px;margin:-6px -8px;padding:6px 8px;transition:background .15s}
-  .info:hover{background:#FAF9F5}
-  .name{display:flex;align-items:center;gap:6px}
-  .caret{
-    color:var(--faint);font-size:15px;font-weight:400;flex:0 0 auto;
-    transition:transform .2s ease;display:inline-block;
-  }
-  .card.open .caret{transform:rotate(90deg)}
-  .hint{
-    font-size:12px;color:var(--faint);margin-top:7px;font-weight:500;
-  }
-  .card.open .hint{display:none}
-  .name{font-size:17px;font-weight:600;letter-spacing:-.01em;line-height:1.3}
-  .card.done .name{text-decoration:line-through}
-  .where{font-size:14px;color:var(--muted);margin-top:2px}
-  .tags{margin-top:9px;display:flex;flex-wrap:wrap;gap:6px}
-  .tag{font-size:11.5px;font-weight:500;padding:3px 9px;border-radius:99px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
-  .tag.g{background:var(--moss-bg);border-color:#CADDD2;color:var(--moss)}
-  .tag.c{background:var(--clay-bg);border-color:#EED9CE;color:#A9552F}
-  .call{
-    flex:0 0 auto;background:var(--clay);color:#fff;text-decoration:none;
-    padding:9px 14px;border-radius:9px;font-size:14px;font-weight:600;margin-top:1px;
-  }
-  .call:active{opacity:.7}
-  .btns{display:flex;flex-direction:column;gap:6px;flex:0 0 auto;align-items:stretch}
-  .site{
-    background:var(--bone);border:1px solid var(--line);color:var(--ink);
-    text-decoration:none;padding:8px 14px;border-radius:9px;
-    font-size:13px;font-weight:500;text-align:center;white-space:nowrap;
-  }
-  .site:active{opacity:.7}
 
-  .more{padding:0 16px 16px;display:none}
+  .tap{
+    display:flex;align-items:flex-start;gap:14px;padding:20px;
+    cursor:pointer;border-radius:18px;
+  }
+  .check{
+    flex:0 0 26px;width:26px;height:26px;margin-top:1px;border-radius:50%;
+    border:2px solid var(--line);display:grid;place-items:center;cursor:pointer;
+    transition:background .15s,border-color .15s;background:#fff;
+  }
+  .check svg{width:13px;height:13px;stroke:#fff;fill:none;stroke-width:3;opacity:0;transition:opacity .15s}
+  .card.done .check{background:var(--green);border-color:var(--green)}
+  .card.done .check svg{opacity:1}
+
+  .body-col{flex:1;min-width:0}
+  .name{font-size:20px;font-weight:700;letter-spacing:-.025em;line-height:1.2}
+  .card.done .name{text-decoration:line-through;text-decoration-thickness:2px}
+  .where{font-size:15px;color:var(--body);margin-top:4px;line-height:1.4}
+  .tags{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+  .tag{
+    font-size:12px;font-weight:600;padding:5px 10px;border-radius:8px;
+    background:var(--hair);color:var(--body);white-space:nowrap;
+  }
+  .tag.g{background:var(--green-bg);color:var(--green-dark)}
+  .tag.a{background:var(--amber-bg);color:var(--amber)}
+
+  .chev{
+    flex:0 0 auto;width:20px;height:20px;margin-top:4px;
+    stroke:#C8CCCA;fill:none;stroke-width:2.5;
+    transition:transform .22s cubic-bezier(.4,0,.2,1);
+  }
+  .card.open .chev{transform:rotate(90deg)}
+
+  /* expanded */
+  .more{display:none;padding:0 20px 20px}
   .card.open .more{display:block}
-  .more-in{border-top:1px solid #EFEDE5;padding-top:13px}
-  .more p{margin:0 0 12px;font-size:14.5px;color:var(--ink2)}
+  .more-in{border-top:1px solid var(--hair);padding-top:16px}
+  .more p{margin:0 0 16px;font-size:15.5px;color:var(--body);line-height:1.55}
   .more p b{color:var(--ink);font-weight:600}
-  .more .flag{color:#A83E24;font-weight:500}
-  .links{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
-  .links a{
-    font-size:14px;font-weight:500;text-decoration:none;color:var(--ink);
-    background:var(--bone);border:1px solid var(--line);padding:8px 12px;border-radius:8px;
+  .more .flag{color:var(--red);font-weight:600}
+  .note{
+    width:100%;border:1px solid var(--line);border-radius:12px;
+    padding:13px 14px;font:inherit;font-size:15px;background:#FAFAFA;color:var(--ink);
   }
-  .note{width:100%;border:1px solid var(--line);border-radius:9px;padding:9px 11px;font:inherit;font-size:14px;background:var(--bone)}
-  .note:focus{outline:none;border-color:var(--clay);background:#fff}
+  .note::placeholder{color:var(--faint)}
+  .note:focus{outline:none;border-color:var(--ink);background:#fff}
 
-  .empty{text-align:center;color:var(--faint);padding:40px 0;font-size:15px;display:none}
-  .empty.show{display:block}
-  footer{margin-top:36px;padding-top:20px;border-top:1px solid var(--line);text-align:center;font-size:13px;color:var(--faint);line-height:1.7}
-  .reset{
-    margin-top:10px;background:none;border:1px solid var(--line);color:var(--muted);
-    font:inherit;font-size:13px;padding:7px 14px;border-radius:8px;cursor:pointer;
+  /* buttons */
+  .cta{display:flex;gap:10px;margin-bottom:14px}
+  .btn{
+    flex:1;text-align:center;text-decoration:none;padding:15px 12px;
+    border-radius:14px;font-size:16px;font-weight:600;letter-spacing:-.01em;
   }
-  .reset:hover{border-color:var(--clay);color:var(--clay)}
+  .btn-call{background:var(--green);color:#fff}
+  .btn-call:active{background:var(--green-dark)}
+  .btn-site{background:#fff;border:1.5px solid var(--line);color:var(--ink)}
+  .btn-site:active{background:#FAFAFA}
+
+  .empty{text-align:center;color:var(--faint);padding:56px 0;font-size:16px;display:none}
+  .empty.show{display:block}
+
+  .clear{
+    display:block;margin:24px auto 8px;background:none;border:0;
+    color:var(--faint);font:inherit;font-size:14px;font-weight:500;
+    text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:8px;
+  }
+  .clear:active{color:var(--red)}
+  .savednote{text-align:center;font-size:13px;color:var(--faint);margin:0}
+
+  /* ---- bottom tabs ---- */
+  .tabs{
+    position:fixed;bottom:0;left:0;right:0;z-index:20;
+    background:rgba(255,255,255,.94);backdrop-filter:blur(12px);
+    border-top:1px solid var(--line);
+    display:flex;padding-bottom:env(safe-area-inset-bottom);
+  }
+  .tab{
+    flex:1;background:none;border:0;cursor:pointer;
+    padding:11px 4px 12px;display:flex;flex-direction:column;align-items:center;gap:4px;
+    font:inherit;font-size:11.5px;font-weight:600;color:var(--faint);letter-spacing:-.01em;
+  }
+  .tab svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  .tab[aria-pressed=true]{color:var(--green)}
+  .tab .pip{
+    font-size:10px;font-weight:700;background:currentColor;color:#fff;
+    border-radius:99px;padding:0 5px;line-height:15px;min-width:15px;
+  }
+  .tab[aria-pressed=true] .pip{background:var(--green);color:#fff}
+  .tab .pip{opacity:.85}
+
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  @media (min-width:600px){
+    .tabs{position:sticky;bottom:0;border-radius:0}
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <header>
+  <span class="eyebrow">Sonoma County</span>
   <h1>Shuttle list</h1>
   <p class="sub">Saturday, October 3 · Shelterwood, Healdsburg</p>
-  <div class="prog"><div class="bar"><i id="fill"></i></div><b id="cnt">0 of 13 called</b></div>
 </header>
 
-<div class="controls">
-  <input id="q" type="search" placeholder="Search vendors…" autocomplete="off">
-  <div class="chips">
-    <button class="chip" data-f="all" aria-pressed="true">All 13</button>
-    <button class="chip" data-f="shuttle" aria-pressed="false">Shuttles 7</button>
-    <button class="chip" data-f="cart" aria-pressed="false">Carts 4</button>
-    <button class="chip" data-f="car" aria-pressed="false">Party car 2</button>
-    <button class="chip" data-f="priced" aria-pressed="false">Has pricing 2</button>
-  </div>
+<div class="progcard">
+  <div class="progtop"><b>Your calls</b><span id="cnt">0 of 13</span></div>
+  <div class="bar"><i id="fill"></i></div>
+</div>
+
+<div class="searchwrap">
+  <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+  <input id="q" type="search" placeholder="Search vendors" autocomplete="off">
 </div>
 
 <div id="list">
 
-  <!-- SHUTTLES -->
+  <!-- ===== SHUTTLES ===== -->
   <div class="card" data-cat="shuttle">
-    <div class="top">
-      <input class="tick" type="checkbox">
-      <div class="info">
-        <div class="name">Pure Luxury Transportation<span class="caret">›</span></div>
+    <div class="tap">
+      <div class="check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <div class="body-col">
+        <div class="name">Pure Luxury</div>
         <div class="where">Petaluma · 130+ vehicles</div>
         <div class="tags"><span class="tag g">TCP 12878</span><span class="tag g">Runs past 1am</span><span class="tag">Quote only</span></div>
-        <div class="hint">Tap for details</div>
       </div>
-      <div class="btns"><a class="call" href="tel:+18006265466">Call</a><a class="site" href="https://pureluxury.com" target="_blank" rel="noopener">Site ↗</a></div>
+      <svg class="chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
     </div>
     <div class="more"><div class="more-in">
-      <p><b>Call first.</b> Biggest fleet in the region — Sprinters, mini-coaches, shuttle buses, limos. Known for last-minute swaps and multi-hotel loops. Can do the party car on the same contract.</p>
-      <div class="links"><a href="tel:+18006265466">800-626-5466</a><a href="https://pureluxury.com" target="_blank" rel="noopener">pureluxury.com ↗</a></div>
-      <input class="note" placeholder="Quote / notes">
+      <p><b>Biggest fleet in the region.</b> Sprinters, mini-coaches, shuttle buses, limos. Known for last-minute swaps and multi-hotel loops. Can do the party car on the same contract.</p>
+      <div class="cta">
+        <a class="btn btn-call" href="tel:+18006265466">Call</a>
+        <a class="btn btn-site" href="https://pureluxury.com" target="_blank" rel="noopener">Website</a>
+      </div>
+      <input class="note" placeholder="Quote, contact, next step">
     </div></div>
   </div>
 
   <div class="card" data-cat="shuttle">
-    <div class="top">
-      <input class="tick" type="checkbox">
-      <div class="info">
-        <div class="name">Sonoma Sterling Limousines<span class="caret">›</span></div>
-        <div class="where">Santa Rosa · 27 vehicles, 1–27 pax</div>
-        <div class="tags"><span class="tag g">TCP 20374-A</span><span class="tag g">Runs past 1am</span><span class="tag c">5-hr minimum</span></div>
-        <div class="hint">Tap for details</div>
+    <div class="tap">
+      <div class="check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <div class="body-col">
+        <div class="name">Sonoma Sterling</div>
+        <div class="where">Santa Rosa · 27 vehicles, 1–27 passengers</div>
+        <div class="tags"><span class="tag g">TCP 20374-A</span><span class="tag g">Runs past 1am</span><span class="tag a">5-hr minimum</span></div>
       </div>
-      <div class="btns"><a class="call" href="tel:+17075425444">Call</a><a class="site" href="https://sonomasterlinglimo.com" target="_blank" rel="noopener">Site ↗</a></div>
+      <svg class="chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
     </div>
     <div class="more"><div class="more-in">
       <p>Family-owned, has a wedding specialist. Drivers experienced on narrow winding roads. <span class="flag">Five-hour minimum</span> — ask how that bills against the split shift.</p>
-      <div class="links"><a href="tel:+17075425444">707-542-5444</a><a href="https://sonomasterlinglimo.com" target="_blank" rel="noopener">sonomasterlinglimo.com ↗</a></div>
-      <input class="note" placeholder="Quote / notes">
+      <div class="cta">
+        <a class="btn btn-call" href="tel:+17075425444">Call</a>
+        <a class="btn btn-site" href="https://sonomasterlinglimo.com" target="_blank" rel="noopener">Website</a>
+      </div>
+      <input class="note" placeholder="Quote, contact, next step">
     </div></div>
   </div>
 
   <div class="card" data-cat="shuttle">
-    <div class="top">
-      <input class="tick" type="checkbox">
-      <div class="info">
-        <div class="name">Beau Wine Tours<span class="caret">›</span></div>
+    <div class="tap">
+      <div class="check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <div class="body-col">
+        <div class="name">Beau Wine Tours</div>
         <div class="where">Sonoma · handles 1 to 300</div>
         <div class="tags"><span class="tag g">TCP 14726</span><span class="tag g">Open 24 hours</span><span class="tag">Quote only</span></div>
-        <div class="hint">Tap for details</div>
       </div>
-      <div class="btns"><a class="call" href="tel:+17079388001">Call</a><a class="site" href="https://beauwinetours.com" target="_blank" rel="noopener">Site ↗</a></div>
+      <svg class="chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
     </div>
     <div class="more"><div class="more-in">
       <p>Sprinters, Sprinter limos, shuttles, coaches. Carries <b>$10M liability</b>, well above the state floor. The 24-hour operation fits a 1am finish.</p>
-      <div class="links"><a href="tel:+17079388001">707-938-8001</a><a href="https://beauwinetours.com" target="_blank" rel="noopener">beauwinetours.com ↗</a></div>
-      <input class="note" placeholder="Quote / notes">
+      <div class="cta">
+        <a class="btn btn-call" href="tel:+17079388001">Call</a>
+        <a class="btn btn-site" href="https://beauwinetours.com" target="_blank" rel="noopener">Website</a>
+      </div>
+      <input class="note" placeholder="Quote, contact, next step">
     </div></div>
   </div>
 
   <div class="card" data-cat="shuttle priced">
-    <div class="top">
-      <input class="tick" type="checkbox">
-      <div class="info">
-        <div class="name">Thunderstar Charter<span class="caret">›</span></div>
-        <div class="where">Cotati · 9-pax vans, 28-pax minibuses</div>
-        <div class="tags"><span class="tag c">~$1,800 reported</span><span class="tag g">Fits the road</span><span class="tag">TCP: ask</span></div>
-        <div class="hint">Tap for details</div>
+    <div class="tap">
+      <div class="check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <div class="body-col">
+        <div class="name">Thunderstar Charter</div>
+        <div class="where">Cotati · 9-passenger vans, 28-passenger minibuses</div>
+        <div class="tags"><span class="tag a">~$1,800 reported</span><span class="tag g">Fits the road</span><span class="tag">TCP: ask</span></div>
       </div>
-      <div class="btns"><a class="call" href="tel:+17075416295">Call</a><a class="site" href="https://thunderstarcharter.com" target="_blank" rel="noopener">Site ↗</a></div>
+      <svg class="chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
     </div>
     <div class="more"><div class="more-in">
-      <p>The value play. A couple reported <b>~$1,800</b> for two buses plus a van — that's a review, not a quote. Wedding-focused since 1997, often recommended by venues. No full coaches, so everything fits the road.</p>
-      <div class="links"><a href="tel:+17075416295">707-541-6295</a><a href="https://thunderstarcharter.com" target="_blank" rel="noopener">thunderstarcharter.com ↗</a></div>
-      <input class="note" placeholder="Quote / notes">
+      <p>A couple reported <b>~$1,800</b> for two buses plus a van — that's a review, not a quote. Wedding-focused since 1997, often recommended by venues. No full coaches, so everything fits the road.</p>
+      <div class="cta">
+        <a class="btn btn-call" href="tel:+17075416295">Call</a>
+        <a class="btn btn-site" href="https://thunderstarcharter.com" target="_blank" rel="noopener">Website</a>
+      </div>
+      <input class="note" placeholder="Quote, contact, next step">
     </div></div>
   </div>
 
   <div class="card" data-cat="shuttle">
-    <div class="top">
-      <input class="tick" type="checkbox">
-      <div class="info">
-        <div class="name">California Wine Tours (CWT)<span class="caret">›</span></div>
-        <div class="where">Napa · 160 vehicles, ADA available</div>
+    <div class="tap">
+      <div class="check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <div class="body-col">
+        <div class="name">California Wine Tours</div>
+        <div class="where">Napa · 160 vehicles, wheelchair accessible</div>
         <div class="tags"><span class="tag g">TCP 9679</span><span class="tag">Quote only</span></div>
-        <div class="hint">Tap for details</div>
       </div>
-      <div class="btns"><a class="call" href="tel:+17072531300">Call</a><a class="site" href="https://californiawinetours.com" target="_blank" rel="noopener">Site ↗</a></div>
+      <svg class="chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
     </div>
     <div class="more"><div class="more-in">
       <p>Called the go-to by local wedding coordinators. Offers <b>site visits and a day-of coordinator</b> — worth it if you run multiple vehicles.</p>
-      <div class="links"><a href="tel:+17072531300">707-253-1300</a><a href="https://californiawinetours.com" target="_blank" rel="noopener">californiawinetours.com ↗</a></div>
-      <input class="note" placeholder="Quote / notes">
+      <div class="cta">
+        <a class="btn btn-call" href="tel:+17072531300">Call</a>
+        <a class="btn btn-site" href="https://californiawinetours.com" target="_blank" rel="noopener">Website</a>
+      </div>
+      <input class="note" placeholder="Quote, contact, next step">
     </div></div>
   </div>
 
   <div class="card" data-cat="shuttle">
-    <div class="top">
-      <input class="tick" type="checkbox">
-      <div class="info">
-        <div class="name">Executive Charters<span class="caret">›</span></div>
-        <div class="where">Santa Rosa · limos, party buses to ~20</div>
+    <div class="tap">
+      <div class="check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <div class="body-col">
+        <div class="name">Executive Charters</div>
+        <div class="where">Santa Rosa · limos, party buses to 20</div>
         <div class="tags"><span class="tag">TCP: ask</span><span class="tag">Quote only</span></div>
-        <div class="hint">Tap for details</div>
       </div>
-      <div class="btns"><a class="call" href="tel:+17074337771">Call</a><a class="site" href="https://santarosalimoservice.com" target="_blank" rel="noopener">Site ↗</a></div>
+      <svg class="chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
     </div>
     <div class="more"><div class="more-in">
       <p>Explicitly serves Healdsburg. A couple credited them with juggling multi-hotel pickups on a tight budget.</p>
-      <div class="links"><a href="tel:+17074337771">707-433-7771</a><a href="https://santarosalimoservice.com" target="_blank" rel="noopener">santarosalimoservice.com ↗</a></div>
-      <input class="note" placeholder="Quote / notes">
+      <div class="cta">
+        <a class="btn btn-call" href="tel:+17074337771">Call</a>
+        <a class="btn btn-site" href="https://santarosalimoservice.com" target="_blank" rel="noopener">Website</a>
+      </div>
+      <input class="note" placeholder="Quote, contact, next step">
     </div></div>
   </div>
 
   <div class="card" data-cat="shuttle priced">
-    <div class="top">
-      <input class="tick" type="checkbox">
-      <div class="info">
-        <div class="name">SONA Concierge<span class="caret">›</span></div>
-        <div class="where">Sprinters and SUVs</div>
-        <div class="tags"><span class="tag c">$210/hr Sprinter</span><span class="tag c">$135/hr SUV</span><span class="tag g">TCP 44687-B</span></div>
-        <div class="hint">Tap for details</div>
+    <div class="tap">
+      <div class="check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <div class="body-col">
+        <div class="name">SONA Concierge</div>
+        <div class="where">Sprinters and SUVs · publishes rates</div>
+        <div class="tags"><span class="tag a">$210/hr Sprinter</span><span class="tag a">$135/hr SUV</span><span class="tag g">TCP 44687-B</span></div>
       </div>
-      <div class="btns"><a class="call" href="https://sonaconcierge.com" target="_blank" rel="noopener">Open ↗</a></div>
+      <svg class="chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
     </div>
     <div class="more"><div class="more-in">
       <p>The only one publishing real numbers — <b>all-in, tax and standard gratuity included.</b> Useful as a price benchmark even if you book elsewhere.</p>
-      <div class="links"><a href="https://sonaconcierge.com" target="_blank" rel="noopener">sonaconcierge.com ↗</a></div>
-      <input class="note" placeholder="Quote / notes">
+      <div class="cta">
+        <a class="btn btn-site" href="https://sonaconcierge.com" target="_blank" rel="noopener">Open website</a>
+      </div>
+      <input class="note" placeholder="Quote, contact, next step">
     </div></div>
   </div>
 
-  <!-- CARTS -->
+  <!-- ===== CARTS ===== -->
   <div class="card" data-cat="cart">
-    <div class="top">
-      <input class="tick" type="checkbox">
-      <div class="info">
-        <div class="name">Wine Country VIP Carts<span class="caret">›</span></div>
-        <div class="where">Santa Rosa · 4, 6 &amp; 8-seat electric</div>
-        <div class="tags"><span class="tag g">Wheelchair cart</span><span class="tag c">Confirm the grade</span></div>
-        <div class="hint">Tap for details</div>
+    <div class="tap">
+      <div class="check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <div class="body-col">
+        <div class="name">Wine Country VIP Carts</div>
+        <div class="where">Santa Rosa · 4, 6 and 8-seat electric</div>
+        <div class="tags"><span class="tag g">Wheelchair cart</span><span class="tag a">Confirm the grade</span></div>
       </div>
-      <div class="btns"><a class="call" href="tel:+17078472278">Call</a><a class="site" href="https://winecountrycarts.com" target="_blank" rel="noopener">Site ↗</a></div>
+      <svg class="chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
     </div>
     <div class="more"><div class="more-in">
       <p>Event carts plus one <b>wheelchair-accessible with ramp and tie-downs.</b> Built for winery lawns though — <span class="flag">ask if they handle a steep gravel grade.</span></p>
-      <div class="links"><a href="tel:+17078472278">707-847-2278</a><a href="https://winecountrycarts.com" target="_blank" rel="noopener">winecountrycarts.com ↗</a></div>
+      <div class="cta">
+        <a class="btn btn-call" href="tel:+17078472278">Call</a>
+        <a class="btn btn-site" href="https://winecountrycarts.com" target="_blank" rel="noopener">Website</a>
+      </div>
       <input class="note" placeholder="Can they do the grade?">
     </div></div>
   </div>
 
   <div class="card" data-cat="cart">
-    <div class="top">
-      <input class="tick" type="checkbox">
-      <div class="info">
-        <div class="name">Event Services Plus<span class="caret">›</span></div>
-        <div class="where">Rohnert Park · 4 &amp; 6-person carts</div>
+    <div class="tap">
+      <div class="check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <div class="body-col">
+        <div class="name">Event Services Plus</div>
+        <div class="where">Rohnert Park · 4 and 6-person carts</div>
         <div class="tags"><span class="tag g">Supplies drivers</span></div>
-        <div class="hint">Tap for details</div>
       </div>
-      <div class="btns"><a class="call" href="tel:+17073037224">Call</a><a class="site" href="https://esprentals.net" target="_blank" rel="noopener">Site ↗</a></div>
+      <svg class="chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
     </div>
     <div class="more"><div class="more-in">
       <p>Event-transport specialists. <b>They supply chauffeurs and attendants</b> — so you don't have to find sober cart drivers.</p>
-      <div class="links"><a href="tel:+17073037224">707-303-7224</a><a href="https://esprentals.net" target="_blank" rel="noopener">esprentals.net ↗</a></div>
+      <div class="cta">
+        <a class="btn btn-call" href="tel:+17073037224">Call</a>
+        <a class="btn btn-site" href="https://esprentals.net" target="_blank" rel="noopener">Website</a>
+      </div>
       <input class="note" placeholder="Notes">
     </div></div>
   </div>
 
   <div class="card" data-cat="cart">
-    <div class="top">
-      <input class="tick" type="checkbox">
-      <div class="info">
-        <div class="name">A-Action Rents<span class="caret">›</span></div>
+    <div class="tap">
+      <div class="check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <div class="body-col">
+        <div class="name">A-Action Rents</div>
         <div class="where">Healdsburg · closest yard, in town</div>
         <div class="tags"><span class="tag g">Rugged</span></div>
-        <div class="hint">Tap for details</div>
       </div>
-      <div class="btns"><a class="call" href="tel:+17074313544">Call</a><a class="site" href="https://aactionrents.com" target="_blank" rel="noopener">Site ↗</a></div>
+      <svg class="chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
     </div>
     <div class="more"><div class="more-in">
       <p>In town, family-owned since 1974, <b>closest yard to the venue by a mile.</b> Ask about UTVs and gators — the online catalog is construction-focused.</p>
-      <div class="links"><a href="tel:+17074313544">707-431-3544</a><a href="https://aactionrents.com" target="_blank" rel="noopener">aactionrents.com ↗</a></div>
+      <div class="cta">
+        <a class="btn btn-call" href="tel:+17074313544">Call</a>
+        <a class="btn btn-site" href="https://aactionrents.com" target="_blank" rel="noopener">Website</a>
+      </div>
       <input class="note" placeholder="Do they stock UTVs?">
     </div></div>
   </div>
 
   <div class="card" data-cat="cart">
-    <div class="top">
-      <input class="tick" type="checkbox">
-      <div class="info">
-        <div class="name">United Rentals<span class="caret">›</span></div>
-        <div class="where">Santa Rosa · 4WD diesel UTVs, 6 pax</div>
-        <div class="tags"><span class="tag g">Real off-road</span><span class="tag c">Closed weekends</span></div>
-        <div class="hint">Tap for details</div>
+    <div class="tap">
+      <div class="check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <div class="body-col">
+        <div class="name">United Rentals</div>
+        <div class="where">Santa Rosa · 4WD diesel UTVs, 6 passengers</div>
+        <div class="tags"><span class="tag g">Real off-road</span><span class="tag a">Closed weekends</span></div>
       </div>
-      <div class="btns"><a class="call" href="tel:+17075857621">Call</a></div>
+      <svg class="chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
     </div>
     <div class="more"><div class="more-in">
       <p>Genuine 4WD UTVs plus gas and electric golf carts. <span class="flag">Branch is closed weekends</span> — schedule a weekday delivery.</p>
-      <div class="links"><a href="tel:+17075857621">707-585-7621</a></div>
+      <div class="cta">
+        <a class="btn btn-call" href="tel:+17075857621">Call</a>
+      </div>
       <input class="note" placeholder="Delivery day">
     </div></div>
   </div>
 
-  <!-- PARTY CAR -->
+  <!-- ===== PARTY CAR ===== -->
   <div class="card" data-cat="car">
-    <div class="top">
-      <input class="tick" type="checkbox">
-      <div class="info">
-        <div class="name">Windsor Wine Tours — "Ian"<span class="caret">›</span></div>
-        <div class="where">Owner-operator · Navigator (7) or van (9)</div>
-        <div class="hint">Tap for details</div>
+    <div class="tap">
+      <div class="check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <div class="body-col">
+        <div class="name">Windsor Wine Tours</div>
+        <div class="where">Owner-operator "Ian" · Navigator (7) or van (9)</div>
       </div>
-      <div class="btns"><a class="call" href="https://windsorwinetours.com" target="_blank" rel="noopener">Open ↗</a></div>
+      <svg class="chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
     </div>
     <div class="more"><div class="more-in">
       <p>Two vehicles, one guy, replies in minutes. The closest thing to "someone with a van" that's still a real business.</p>
-      <div class="links"><a href="https://windsorwinetours.com" target="_blank" rel="noopener">windsorwinetours.com ↗</a></div>
+      <div class="cta">
+        <a class="btn btn-site" href="https://windsorwinetours.com" target="_blank" rel="noopener">Open website</a>
+      </div>
       <input class="note" placeholder="Notes">
     </div></div>
   </div>
 
   <div class="card" data-cat="car">
-    <div class="top">
-      <input class="tick" type="checkbox">
-      <div class="info">
-        <div class="name">Five Star Limousine<span class="caret">›</span></div>
+    <div class="tap">
+      <div class="check" role="checkbox" aria-checked="false" tabindex="0"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <div class="body-col">
+        <div class="name">Five Star Limousine</div>
         <div class="where">Healdsburg · limos and vans, local</div>
         <div class="tags"><span class="tag">TCP: ask</span></div>
-        <div class="hint">Tap for details</div>
       </div>
-      <div class="btns"><a class="call" href="tel:+17074339721">Call</a></div>
+      <svg class="chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
     </div>
     <div class="more"><div class="more-in">
       <p>Based in 95448 — in town. Verify the TCP.</p>
-      <div class="links"><a href="tel:+17074339721">707-433-9721</a></div>
+      <div class="cta">
+        <a class="btn btn-call" href="tel:+17074339721">Call</a>
+      </div>
       <input class="note" placeholder="Notes">
     </div></div>
   </div>
 
 </div>
+
 <p class="empty" id="empty">Nothing matches that.</p>
 
-<footer>Your checkmarks and notes save on this device.<br><button id="reset" class="reset">Clear everything</button></footer>
+<button class="clear" id="reset">Clear everything</button>
+<p class="savednote">Saved on this device</p>
 
 </div>
 
+<nav class="tabs">
+  <button class="tab" data-f="all" aria-pressed="true">
+    <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    All <span class="pip">13</span>
+  </button>
+  <button class="tab" data-f="shuttle" aria-pressed="false">
+    <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M3 11h18M7 17v2M17 17v2"/></svg>
+    Shuttles <span class="pip">7</span>
+  </button>
+  <button class="tab" data-f="cart" aria-pressed="false">
+    <svg viewBox="0 0 24 24"><path d="M4 15h11l3-5h3v5M4 15V8h7l4 2"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+    Carts <span class="pip">4</span>
+  </button>
+  <button class="tab" data-f="car" aria-pressed="false">
+    <svg viewBox="0 0 24 24"><path d="M5 16h14M4 16v-4l2-5h12l2 5v4"/><circle cx="7.5" cy="16.5" r="1.5"/><circle cx="16.5" cy="16.5" r="1.5"/></svg>
+    Party car <span class="pip">2</span>
+  </button>
+</nav>
+
 <script>
   const cards = [...document.querySelectorAll('.card')];
-  const chips = [...document.querySelectorAll('.chip')];
-  const q = document.getElementById('q');
+  const tabs  = [...document.querySelectorAll('.tab')];
+  const q     = document.getElementById('q');
   const empty = document.getElementById('empty');
-  let filter = 'all';
+  let filter  = 'all';
 
-  // expand on tap
   cards.forEach(c => {
-    c.querySelector('.info').addEventListener('click', () => c.classList.toggle('open'));
-    c.querySelector('.tick').addEventListener('change', e => {
-      c.classList.toggle('done', e.target.checked);
-      progress();
+    const check = c.querySelector('.check');
+
+    // expand — but not when the checkmark is hit
+    c.querySelector('.tap').addEventListener('click', e => {
+      if (e.target.closest('.check')) return;
+      c.classList.toggle('open');
     });
+
+    const toggle = () => {
+      const on = !c.classList.contains('done');
+      c.classList.toggle('done', on);
+      check.setAttribute('aria-checked', on);
+      progress(); save();
+    };
+    check.addEventListener('click', toggle);
+    check.addEventListener('keydown', e => {
+      if (e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); toggle(); }
+    });
+
+    c.querySelector('.note').addEventListener('input', save);
   });
 
-  // filter chips
-  chips.forEach(b => b.addEventListener('click', () => {
-    chips.forEach(x => x.setAttribute('aria-pressed', x === b));
+  tabs.forEach(b => b.addEventListener('click', () => {
+    tabs.forEach(x => x.setAttribute('aria-pressed', x === b));
     filter = b.dataset.f;
     apply();
+    window.scrollTo({top:0, behavior:'smooth'});
   }));
 
   q.addEventListener('input', apply);
@@ -404,9 +520,9 @@
     const term = q.value.trim().toLowerCase();
     let shown = 0;
     cards.forEach(c => {
-      const catOk = filter === 'all' || c.dataset.cat.includes(filter);
+      const catOk  = filter === 'all' || c.dataset.cat.includes(filter);
       const textOk = !term || c.textContent.toLowerCase().includes(term);
-      const show = catOk && textOk;
+      const show   = catOk && textOk;
       c.classList.toggle('hide', !show);
       if (show) shown++;
     });
@@ -414,54 +530,43 @@
   }
 
   function progress(){
-    const done = cards.filter(c => c.querySelector('.tick').checked).length;
-    document.getElementById('cnt').textContent = done + ' of ' + cards.length + ' called';
+    const done = cards.filter(c => c.classList.contains('done')).length;
+    document.getElementById('cnt').textContent = done + ' of ' + cards.length;
     document.getElementById('fill').style.width = (done / cards.length * 100) + '%';
   }
 
   /* ---- save + restore ---- */
-  const KEY = 'sonoma-shuttle-v1';
-
-  function keyFor(card){
-    return card.querySelector('.name').textContent.replace('\u203a','').trim();
-  }
+  const KEY = 'sonoma-shuttle-v2';
+  const nameOf = c => c.querySelector('.name').textContent.trim();
 
   function save(){
     const data = {};
-    cards.forEach(c => {
-      data[keyFor(c)] = {
-        called: c.querySelector('.tick').checked,
-        note: c.querySelector('.note').value
-      };
+    cards.forEach(c => data[nameOf(c)] = {
+      done: c.classList.contains('done'),
+      note: c.querySelector('.note').value
     });
-    try { localStorage.setItem(KEY, JSON.stringify(data)); } catch(e){}
+    try{ localStorage.setItem(KEY, JSON.stringify(data)); }catch(e){}
   }
 
   function restore(){
     let data;
-    try { data = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e){ return; }
+    try{ data = JSON.parse(localStorage.getItem(KEY) || '{}'); }catch(e){ return; }
     cards.forEach(c => {
-      const saved = data[keyFor(c)];
-      if (!saved) return;
-      const tick = c.querySelector('.tick');
-      tick.checked = !!saved.called;
-      c.classList.toggle('done', tick.checked);
-      c.querySelector('.note').value = saved.note || '';
+      const s = data[nameOf(c)];
+      if (!s) return;
+      c.classList.toggle('done', !!s.done);
+      c.querySelector('.check').setAttribute('aria-checked', !!s.done);
+      c.querySelector('.note').value = s.note || '';
     });
   }
 
-  cards.forEach(c => {
-    c.querySelector('.tick').addEventListener('change', save);
-    c.querySelector('.note').addEventListener('input', save);
-  });
-
   document.getElementById('reset').addEventListener('click', () => {
     if (!confirm('Clear every checkmark and note?')) return;
-    try { localStorage.removeItem(KEY); } catch(e){}
+    try{ localStorage.removeItem(KEY); }catch(e){}
     cards.forEach(c => {
-      c.querySelector('.tick').checked = false;
-      c.querySelector('.note').value = '';
       c.classList.remove('done');
+      c.querySelector('.check').setAttribute('aria-checked','false');
+      c.querySelector('.note').value = '';
     });
     progress();
   });

@@ -21,6 +21,7 @@
     --pad:clamp(16px,4vw,28px);
   }
   *{box-sizing:border-box}
+  body,.co,.body,dd{overflow-wrap:anywhere}
   html{-webkit-text-size-adjust:100%}
   body{
     margin:0;
@@ -28,8 +29,7 @@
     background-image:
       radial-gradient(ellipse 80% 50% at 50% -10%, rgba(32,178,170,.10), transparent 70%),
       radial-gradient(ellipse 60% 40% at 50% 100%, rgba(201,162,39,.06), transparent 70%);
-    background-attachment:fixed;
-    color:var(--silver);
+        color:var(--silver);
     font-family:"Barlow",system-ui,-apple-system,sans-serif;
     font-size:17px;
     line-height:1.55;
@@ -133,7 +133,7 @@
   .co .where{color:var(--silver-dim);font-size:13px;font-family:"IBM Plex Mono",monospace;letter-spacing:.04em}
   .chev{color:var(--gold-dim);flex:0 0 auto;transition:transform .2s ease;font-size:12px}
   details[open] .chev{transform:rotate(90deg)}
-  .body{padding:0 var(--pad) 20px;border-top:1px solid var(--line);margin-top:-1px;padding-top:18px}
+  .body{padding:0 var(--pad) 20px;border-top:1px solid var(--line);padding-top:18px}
 
   /* ---- The phone number: the signature ---- */
   .tel{
@@ -146,7 +146,14 @@
     transition:color .15s ease,border-color .15s ease;
   }
   .tel:hover,.tel:focus-visible{color:var(--sea);border-bottom-color:var(--sea)}
-  .tel .web{display:block;font-size:13px;font-weight:400;color:var(--silver-dim);letter-spacing:.06em;border:0}
+  .web{
+    display:block;font-family:"IBM Plex Mono",monospace;
+    font-size:13px;font-weight:400;color:var(--silver-dim);
+    letter-spacing:.04em;margin:-10px 0 16px;
+    overflow-wrap:anywhere;
+  }
+  .web a{color:var(--sea);text-decoration:none;border-bottom:1px solid rgba(32,178,170,.35)}
+  .web a:hover,.web a:focus-visible{color:#fff;border-bottom-color:#fff}
 
   dl{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:0 0 16px;font-size:15px}
   dt{
@@ -285,7 +292,7 @@
 <details open>
   <summary><span class="rank">1</span><span class="co"><span class="name">Pure Luxury Transportation</span><span class="where">Petaluma</span></span><span class="chev">&#10148;</span></summary>
   <div class="body">
-    <a class="tel" href="tel:+18006265466">800-626-5466<span class="web">pureluxury.com &middot; alt 707-775-2920</span></a>
+    <a class="tel" href="tel:+18006265466">800-626-5466</a><span class="web">pureluxury.com &middot; alt 707-775-2920</span>
     <dl>
       <dt>Fleet</dt><dd>130+ vehicles — Sprinters, mini-coaches, shuttle buses, limos</dd>
       <dt>Past 1am</dt><dd><span class="yes">Yes</span></dd>
@@ -303,7 +310,7 @@
 <details>
   <summary><span class="rank">2</span><span class="co"><span class="name">Sonoma Sterling Limousines</span><span class="where">Santa Rosa</span></span><span class="chev">&#10148;</span></summary>
   <div class="body">
-    <a class="tel" href="tel:+17075425444">707-542-5444<span class="web">sonomasterlinglimo.com</span></a>
+    <a class="tel" href="tel:+17075425444">707-542-5444</a><span class="web">sonomasterlinglimo.com</span>
     <dl>
       <dt>Fleet</dt><dd>27 vehicles, 1–27 passengers — Sprinters, executive shuttles, limos</dd>
       <dt>Past 1am</dt><dd><span class="yes">Yes</span></dd>
@@ -321,7 +328,7 @@
 <details>
   <summary><span class="rank">3</span><span class="co"><span class="name">Beau Wine Tours</span><span class="where">Sonoma</span></span><span class="chev">&#10148;</span></summary>
   <div class="body">
-    <a class="tel" href="tel:+17079388001">707-938-8001<span class="web">beauwinetours.com &middot; toll-free 800-387-2328</span></a>
+    <a class="tel" href="tel:+17079388001">707-938-8001</a><span class="web">beauwinetours.com &middot; toll-free 800-387-2328</span>
     <dl>
       <dt>Fleet</dt><dd>Sprinters, Sprinter limos, shuttles, coaches — handles 1 to 300</dd>
       <dt>Past 1am</dt><dd><span class="yes">Open 24 hours</span></dd>
@@ -339,7 +346,7 @@
 <details>
   <summary><span class="rank">4</span><span class="co"><span class="name">Thunderstar Charter</span><span class="where">Cotati &middot; budget pick</span></span><span class="chev">&#10148;</span></summary>
   <div class="body">
-    <a class="tel" href="tel:+17075416295">707-541-6295<span class="web">thunderstarcharter.com &middot; ask for Anne Picchi</span></a>
+    <a class="tel" href="tel:+17075416295">707-541-6295</a><span class="web">thunderstarcharter.com &middot; ask for Anne Picchi</span>
     <dl>
       <dt>Fleet</dt><dd>9-passenger vans + 28-passenger minibuses</dd>
       <dt>Past 1am</dt><dd><span class="ask">Ask</span></dd>
@@ -357,7 +364,7 @@
 <details>
   <summary><span class="rank">5</span><span class="co"><span class="name">CWT / California Wine Tours</span><span class="where">Napa &middot; if headcount is big</span></span><span class="chev">&#10148;</span></summary>
   <div class="body">
-    <a class="tel" href="tel:+17072531300">707-253-1300<span class="web">californiawinetours.com</span></a>
+    <a class="tel" href="tel:+17072531300">707-253-1300</a><span class="web">californiawinetours.com</span>
     <dl>
       <dt>Fleet</dt><dd>160 vehicles including wheelchair-accessible buses</dd>
       <dt>Past 1am</dt><dd><span class="ask">Ask</span></dd>
@@ -375,7 +382,7 @@
 <details class="alt">
   <summary><span class="rank">6</span><span class="co"><span class="name">Executive Charters</span><span class="where">Santa Rosa</span></span><span class="chev">&#10148;</span></summary>
   <div class="body">
-    <a class="tel" href="tel:+17074337771">707-433-7771<span class="web">santarosalimoservice.com</span></a>
+    <a class="tel" href="tel:+17074337771">707-433-7771</a><span class="web">santarosalimoservice.com</span>
     <dl>
       <dt>Fleet</dt><dd>Limos, party buses up to ~20</dd>
       <dt>Past 1am</dt><dd><span class="ask">Ask</span></dd>
@@ -392,7 +399,7 @@
 <details class="alt">
   <summary><span class="rank">7</span><span class="co"><span class="name">SONA Concierge</span><span class="where">Published pricing</span></span><span class="chev">&#10148;</span></summary>
   <div class="body">
-    <a class="tel" href="https://sonaconcierge.com">sonaconcierge.com<span class="web">contact via site</span></a>
+    <a class="tel" href="https://sonaconcierge.com">sonaconcierge.com</a><span class="web">contact via site</span>
     <dl>
       <dt>Fleet</dt><dd>Sprinter vans, SUVs, Sprinter limos, party buses</dd>
       <dt>Rates</dt><dd><b>Sprinter $210/hr &middot; SUV $135/hr</b> — all-in, tax and standard gratuity included</dd>
@@ -417,7 +424,7 @@
 <details>
   <summary><span class="rank">1</span><span class="co"><span class="name">Wine Country VIP Carts</span><span class="where">Santa Rosa</span></span><span class="chev">&#10148;</span></summary>
   <div class="body">
-    <a class="tel" href="tel:+17078472278">707-847-2278<span class="web">winecountrycarts.com &middot; vipcartssantarosa@crescorent.com</span></a>
+    <a class="tel" href="tel:+17078472278">707-847-2278</a><span class="web">winecountrycarts.com &middot; vipcartssantarosa@crescorent.com</span>
     <dl>
       <dt>Have</dt><dd>4, 6 and 8-seat electric event carts + one wheelchair-accessible with ramp and tie-downs</dd>
       <dt>Terrain</dt><dd class="ask">Built for winery lawns — confirm the grade</dd>
@@ -433,7 +440,7 @@
 <details>
   <summary><span class="rank">2</span><span class="co"><span class="name">Event Services Plus</span><span class="where">Rohnert Park</span></span><span class="chev">&#10148;</span></summary>
   <div class="body">
-    <a class="tel" href="tel:+17073037224">707-303-7224<span class="web">esprentals.net &middot; info@esprentals.net</span></a>
+    <a class="tel" href="tel:+17073037224">707-303-7224</a><span class="web">esprentals.net &middot; info@esprentals.net</span>
     <dl>
       <dt>Have</dt><dd>4 and 6-person carts, chauffeured service, attendants and greeters</dd>
       <dt>Terrain</dt><dd class="ask">Confirm</dd>
@@ -449,7 +456,7 @@
 <details>
   <summary><span class="rank">3</span><span class="co"><span class="name">A-Action Rents</span><span class="where">Healdsburg &middot; closest yard</span></span><span class="chev">&#10148;</span></summary>
   <div class="body">
-    <a class="tel" href="tel:+17074313544">707-431-3544<span class="web">aactionrents.com &middot; 1427 Grove St, Healdsburg</span></a>
+    <a class="tel" href="tel:+17074313544">707-431-3544</a><span class="web">aactionrents.com &middot; 1427 Grove St, Healdsburg</span>
     <dl>
       <dt>Have</dt><dd>Ask about UTVs and gators — catalog online is construction-focused</dd>
       <dt>Terrain</dt><dd><span class="yes">Rugged — the right tool if the grade is real</span></dd>
@@ -465,7 +472,7 @@
 <details>
   <summary><span class="rank">4</span><span class="co"><span class="name">United Rentals</span><span class="where">Santa Rosa</span></span><span class="chev">&#10148;</span></summary>
   <div class="body">
-    <a class="tel" href="tel:+17075857621">707-585-7621<span class="web">3939 S Moorland Ave &middot; Cloverdale branch: 707-894-8880</span></a>
+    <a class="tel" href="tel:+17075857621">707-585-7621</a><span class="web">3939 S Moorland Ave &middot; Cloverdale branch: 707-894-8880</span>
     <dl>
       <dt>Have</dt><dd>4WD diesel UTVs, 6 passengers, 25 mph — plus gas and electric golf carts</dd>
       <dt>Terrain</dt><dd><span class="yes">Genuine off-road capability</span></dd>
@@ -489,7 +496,7 @@
 <details class="alt">
   <summary><span class="rank">1</span><span class="co"><span class="name">Windsor Wine Tours &mdash; "Ian"</span><span class="where">Owner-operator</span></span><span class="chev">&#10148;</span></summary>
   <div class="body">
-    <a class="tel" href="https://windsorwinetours.com">windsorwinetours.com<span class="web">contact via site</span></a>
+    <a class="tel" href="https://windsorwinetours.com">windsorwinetours.com</a><span class="web">contact via site</span>
     <dl>
       <dt>Have</dt><dd>Lincoln Navigator (7) or a van (9)</dd>
     </dl>
@@ -504,7 +511,7 @@
 <details class="alt">
   <summary><span class="rank">2</span><span class="co"><span class="name">Five Star Limousine</span><span class="where">Healdsburg</span></span><span class="chev">&#10148;</span></summary>
   <div class="body">
-    <a class="tel" href="tel:+17074339721">707-433-9721<span class="web">Local — based in 95448</span></a>
+    <a class="tel" href="tel:+17074339721">707-433-9721</a><span class="web">Local — based in 95448</span>
     <p class="why">Limos and vans, in town. Verify the TCP.</p>
     <div class="log">
       <label><input type="checkbox"> Called</label>

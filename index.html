@@ -53,7 +53,18 @@
   .card.hide{display:none}
   .top{display:flex;align-items:flex-start;gap:13px;padding:16px}
   .tick{width:22px;height:22px;flex:0 0 22px;margin-top:2px;accent-color:var(--moss);cursor:pointer}
-  .info{flex:1;min-width:0;cursor:pointer}
+  .info{flex:1;min-width:0;cursor:pointer;border-radius:8px;margin:-6px -8px;padding:6px 8px;transition:background .15s}
+  .info:hover{background:#FAF9F5}
+  .name{display:flex;align-items:center;gap:6px}
+  .caret{
+    color:var(--faint);font-size:15px;font-weight:400;flex:0 0 auto;
+    transition:transform .2s ease;display:inline-block;
+  }
+  .card.open .caret{transform:rotate(90deg)}
+  .hint{
+    font-size:12px;color:var(--faint);margin-top:7px;font-weight:500;
+  }
+  .card.open .hint{display:none}
   .name{font-size:17px;font-weight:600;letter-spacing:-.01em;line-height:1.3}
   .card.done .name{text-decoration:line-through}
   .where{font-size:14px;color:var(--muted);margin-top:2px}
@@ -66,6 +77,13 @@
     padding:9px 14px;border-radius:9px;font-size:14px;font-weight:600;margin-top:1px;
   }
   .call:active{opacity:.7}
+  .btns{display:flex;flex-direction:column;gap:6px;flex:0 0 auto;align-items:stretch}
+  .site{
+    background:var(--bone);border:1px solid var(--line);color:var(--ink);
+    text-decoration:none;padding:8px 14px;border-radius:9px;
+    font-size:13px;font-weight:500;text-align:center;white-space:nowrap;
+  }
+  .site:active{opacity:.7}
 
   .more{padding:0 16px 16px;display:none}
   .card.open .more{display:block}
@@ -114,11 +132,12 @@
     <div class="top">
       <input class="tick" type="checkbox">
       <div class="info">
-        <div class="name">Pure Luxury Transportation</div>
+        <div class="name">Pure Luxury Transportation<span class="caret">›</span></div>
         <div class="where">Petaluma · 130+ vehicles</div>
         <div class="tags"><span class="tag g">TCP 12878</span><span class="tag g">Runs past 1am</span><span class="tag">Quote only</span></div>
+        <div class="hint">Tap for details</div>
       </div>
-      <a class="call" href="tel:+18006265466">Call</a>
+      <div class="btns"><a class="call" href="tel:+18006265466">Call</a><a class="site" href="https://pureluxury.com" target="_blank" rel="noopener">Site ↗</a></div>
     </div>
     <div class="more"><div class="more-in">
       <p><b>Call first.</b> Biggest fleet in the region — Sprinters, mini-coaches, shuttle buses, limos. Known for last-minute swaps and multi-hotel loops. Can do the party car on the same contract.</p>
@@ -131,11 +150,12 @@
     <div class="top">
       <input class="tick" type="checkbox">
       <div class="info">
-        <div class="name">Sonoma Sterling Limousines</div>
+        <div class="name">Sonoma Sterling Limousines<span class="caret">›</span></div>
         <div class="where">Santa Rosa · 27 vehicles, 1–27 pax</div>
         <div class="tags"><span class="tag g">TCP 20374-A</span><span class="tag g">Runs past 1am</span><span class="tag c">5-hr minimum</span></div>
+        <div class="hint">Tap for details</div>
       </div>
-      <a class="call" href="tel:+17075425444">Call</a>
+      <div class="btns"><a class="call" href="tel:+17075425444">Call</a><a class="site" href="https://sonomasterlinglimo.com" target="_blank" rel="noopener">Site ↗</a></div>
     </div>
     <div class="more"><div class="more-in">
       <p>Family-owned, has a wedding specialist. Drivers experienced on narrow winding roads. <span class="flag">Five-hour minimum</span> — ask how that bills against the split shift.</p>
@@ -148,11 +168,12 @@
     <div class="top">
       <input class="tick" type="checkbox">
       <div class="info">
-        <div class="name">Beau Wine Tours</div>
+        <div class="name">Beau Wine Tours<span class="caret">›</span></div>
         <div class="where">Sonoma · handles 1 to 300</div>
         <div class="tags"><span class="tag g">TCP 14726</span><span class="tag g">Open 24 hours</span><span class="tag">Quote only</span></div>
+        <div class="hint">Tap for details</div>
       </div>
-      <a class="call" href="tel:+17079388001">Call</a>
+      <div class="btns"><a class="call" href="tel:+17079388001">Call</a><a class="site" href="https://beauwinetours.com" target="_blank" rel="noopener">Site ↗</a></div>
     </div>
     <div class="more"><div class="more-in">
       <p>Sprinters, Sprinter limos, shuttles, coaches. Carries <b>$10M liability</b>, well above the state floor. The 24-hour operation fits a 1am finish.</p>
@@ -165,11 +186,12 @@
     <div class="top">
       <input class="tick" type="checkbox">
       <div class="info">
-        <div class="name">Thunderstar Charter</div>
+        <div class="name">Thunderstar Charter<span class="caret">›</span></div>
         <div class="where">Cotati · 9-pax vans, 28-pax minibuses</div>
         <div class="tags"><span class="tag c">~$1,800 reported</span><span class="tag g">Fits the road</span><span class="tag">TCP: ask</span></div>
+        <div class="hint">Tap for details</div>
       </div>
-      <a class="call" href="tel:+17075416295">Call</a>
+      <div class="btns"><a class="call" href="tel:+17075416295">Call</a><a class="site" href="https://thunderstarcharter.com" target="_blank" rel="noopener">Site ↗</a></div>
     </div>
     <div class="more"><div class="more-in">
       <p>The value play. A couple reported <b>~$1,800</b> for two buses plus a van — that's a review, not a quote. Wedding-focused since 1997, often recommended by venues. No full coaches, so everything fits the road.</p>
@@ -182,11 +204,12 @@
     <div class="top">
       <input class="tick" type="checkbox">
       <div class="info">
-        <div class="name">California Wine Tours (CWT)</div>
+        <div class="name">California Wine Tours (CWT)<span class="caret">›</span></div>
         <div class="where">Napa · 160 vehicles, ADA available</div>
         <div class="tags"><span class="tag g">TCP 9679</span><span class="tag">Quote only</span></div>
+        <div class="hint">Tap for details</div>
       </div>
-      <a class="call" href="tel:+17072531300">Call</a>
+      <div class="btns"><a class="call" href="tel:+17072531300">Call</a><a class="site" href="https://californiawinetours.com" target="_blank" rel="noopener">Site ↗</a></div>
     </div>
     <div class="more"><div class="more-in">
       <p>Called the go-to by local wedding coordinators. Offers <b>site visits and a day-of coordinator</b> — worth it if you run multiple vehicles.</p>
@@ -199,11 +222,12 @@
     <div class="top">
       <input class="tick" type="checkbox">
       <div class="info">
-        <div class="name">Executive Charters</div>
+        <div class="name">Executive Charters<span class="caret">›</span></div>
         <div class="where">Santa Rosa · limos, party buses to ~20</div>
         <div class="tags"><span class="tag">TCP: ask</span><span class="tag">Quote only</span></div>
+        <div class="hint">Tap for details</div>
       </div>
-      <a class="call" href="tel:+17074337771">Call</a>
+      <div class="btns"><a class="call" href="tel:+17074337771">Call</a><a class="site" href="https://santarosalimoservice.com" target="_blank" rel="noopener">Site ↗</a></div>
     </div>
     <div class="more"><div class="more-in">
       <p>Explicitly serves Healdsburg. A couple credited them with juggling multi-hotel pickups on a tight budget.</p>
@@ -216,7 +240,7 @@
     <div class="top">
       <input class="tick" type="checkbox">
       <div class="info">
-        <div class="name">SONA Concierge</div>
+        <div class="name">SONA Concierge<span class="caret">›</span></div>
         <div class="where">Sprinters and SUVs</div>
         <div class="tags"><span class="tag c">$210/hr Sprinter</span><span class="tag c">$135/hr SUV</span><span class="tag g">TCP 44687-B</span></div>
       </div>
@@ -234,11 +258,12 @@
     <div class="top">
       <input class="tick" type="checkbox">
       <div class="info">
-        <div class="name">Wine Country VIP Carts</div>
+        <div class="name">Wine Country VIP Carts<span class="caret">›</span></div>
         <div class="where">Santa Rosa · 4, 6 &amp; 8-seat electric</div>
         <div class="tags"><span class="tag g">Wheelchair cart</span><span class="tag c">Confirm the grade</span></div>
+        <div class="hint">Tap for details</div>
       </div>
-      <a class="call" href="tel:+17078472278">Call</a>
+      <div class="btns"><a class="call" href="tel:+17078472278">Call</a><a class="site" href="https://winecountrycarts.com" target="_blank" rel="noopener">Site ↗</a></div>
     </div>
     <div class="more"><div class="more-in">
       <p>Event carts plus one <b>wheelchair-accessible with ramp and tie-downs.</b> Built for winery lawns though — <span class="flag">ask if they handle a steep gravel grade.</span></p>
@@ -251,11 +276,12 @@
     <div class="top">
       <input class="tick" type="checkbox">
       <div class="info">
-        <div class="name">Event Services Plus</div>
+        <div class="name">Event Services Plus<span class="caret">›</span></div>
         <div class="where">Rohnert Park · 4 &amp; 6-person carts</div>
         <div class="tags"><span class="tag g">Supplies drivers</span></div>
+        <div class="hint">Tap for details</div>
       </div>
-      <a class="call" href="tel:+17073037224">Call</a>
+      <div class="btns"><a class="call" href="tel:+17073037224">Call</a><a class="site" href="https://esprentals.net" target="_blank" rel="noopener">Site ↗</a></div>
     </div>
     <div class="more"><div class="more-in">
       <p>Event-transport specialists. <b>They supply chauffeurs and attendants</b> — so you don't have to find sober cart drivers.</p>
@@ -268,11 +294,12 @@
     <div class="top">
       <input class="tick" type="checkbox">
       <div class="info">
-        <div class="name">A-Action Rents</div>
+        <div class="name">A-Action Rents<span class="caret">›</span></div>
         <div class="where">Healdsburg · closest yard, in town</div>
         <div class="tags"><span class="tag g">Rugged</span></div>
+        <div class="hint">Tap for details</div>
       </div>
-      <a class="call" href="tel:+17074313544">Call</a>
+      <div class="btns"><a class="call" href="tel:+17074313544">Call</a><a class="site" href="https://aactionrents.com" target="_blank" rel="noopener">Site ↗</a></div>
     </div>
     <div class="more"><div class="more-in">
       <p>In town, family-owned since 1974, <b>closest yard to the venue by a mile.</b> Ask about UTVs and gators — the online catalog is construction-focused.</p>
@@ -285,11 +312,12 @@
     <div class="top">
       <input class="tick" type="checkbox">
       <div class="info">
-        <div class="name">United Rentals</div>
+        <div class="name">United Rentals<span class="caret">›</span></div>
         <div class="where">Santa Rosa · 4WD diesel UTVs, 6 pax</div>
         <div class="tags"><span class="tag g">Real off-road</span><span class="tag c">Closed weekends</span></div>
+        <div class="hint">Tap for details</div>
       </div>
-      <a class="call" href="tel:+17075857621">Call</a>
+      <div class="btns"><a class="call" href="tel:+17075857621">Call</a></div>
     </div>
     <div class="more"><div class="more-in">
       <p>Genuine 4WD UTVs plus gas and electric golf carts. <span class="flag">Branch is closed weekends</span> — schedule a weekday delivery.</p>
@@ -303,7 +331,7 @@
     <div class="top">
       <input class="tick" type="checkbox">
       <div class="info">
-        <div class="name">Windsor Wine Tours — "Ian"</div>
+        <div class="name">Windsor Wine Tours — "Ian"<span class="caret">›</span></div>
         <div class="where">Owner-operator · Navigator (7) or van (9)</div>
       </div>
       <a class="call" href="https://windsorwinetours.com" target="_blank" rel="noopener">Open</a>
@@ -319,11 +347,12 @@
     <div class="top">
       <input class="tick" type="checkbox">
       <div class="info">
-        <div class="name">Five Star Limousine</div>
+        <div class="name">Five Star Limousine<span class="caret">›</span></div>
         <div class="where">Healdsburg · limos and vans, local</div>
         <div class="tags"><span class="tag">TCP: ask</span></div>
+        <div class="hint">Tap for details</div>
       </div>
-      <a class="call" href="tel:+17074339721">Call</a>
+      <div class="btns"><a class="call" href="tel:+17074339721">Call</a></div>
     </div>
     <div class="more"><div class="more-in">
       <p>Based in 95448 — in town. Verify the TCP.</p>
